@@ -19,23 +19,39 @@
             <div
               class="flex flex-row justify-center items-center gap-4 md:text-left w-full pt-5"
             >
-              <a href="#" class="flex flex-col justify-center items-center">
+              <a
+                href="https://www.linkedin.com/company/cdi-encg-agadir/posts/"
+                target="_blank"
+                class="flex flex-col justify-center items-center"
+              >
                 <img
                   src="../assets/svg/linkedin.svg"
                   class="w-8 transition-all duration-300 hover:brightness-200"
                 />
               </a>
-              <a href="#" class="flex flex-col justify-center items-center">
+              <a
+                href="https://web.facebook.com/cdi.encga"
+                target="_blank"
+                class="flex flex-col justify-center items-center"
+              >
                 <img
                   src="../assets/svg/facebook-color.svg"
                   class="w-8 transition-all duration-300 hover:brightness-200"
               /></a>
-              <a href="#" class="flex flex-col justify-center items-center">
+              <a
+                href="https://www.instagram.com/cdi_encgagadir/"
+                target="_blank"
+                class="flex flex-col justify-center items-center"
+              >
                 <img
                   src="../assets/svg/instagram-1-svgrepo-com.svg"
                   class="w-8 transition-all duration-300 hover:brightness-200"
               /></a>
-              <a href="#" class="flex flex-col justify-center items-center">
+              <a
+                href="https://www.tiktok.com/@cdi_encgagadir"
+                target="_blank"
+                class="flex flex-col justify-center items-center"
+              >
                 <img
                   src="../assets/svg/tiktok.svg"
                   class="w-8 transition-all duration-300 hover:brightness-200"
@@ -43,34 +59,6 @@
             </div>
           </div>
         </div>
-
-        <div class="flex gap-6 w-full">
-          <div class="flex flex-col gap-3 text-center md:text-left w-full">
-            <h2 class="flex flex-col text-xl font-bold">Quick Links</h2>
-            <div class="flex flex-col text-gray-500 gap-3">
-              <a href="#" class="hover:text-gray-300 md:w-fit">Home</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">What We Do</a>
-              <!-- <a href="#" class="hover:text-gray-300 md:w-fit">Tools</a> -->
-              <a href="#" class="hover:text-gray-300 md:w-fit">Agency</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">About Us</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">Contact Us</a>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="flex gap-6 w-full">
-          <div class="flex flex-col gap-3 text-center md:text-left w-full">
-            <h2 class="flex flex-col text-xl font-bold">Ressources</h2>
-            <div class="flex flex-col text-gray-500 gap-3">
-              <a href="#" class="hover:text-gray-300 md:w-fit">Documentation</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">Tutorials</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">Blogs</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">Open Source</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit"
-                >Community Forum</a
-              >
-            </div>
-          </div>
-        </div> -->
         <div class="flex gap-6 w-full">
           <div
             class="flex flex-col gap-4 md:gap-6 text-center md:text-left w-full"

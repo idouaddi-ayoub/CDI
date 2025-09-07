@@ -1,10 +1,7 @@
-<script setup lang="ts">
-import AppLoaderCopy from "./components/AppLoaderCopy.vue";
-</script>
+<script setup lang="ts"></script>
 <template>
   <UApp>
     <NuxtRouteAnnouncer />
-    <AppLoaderCopy />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

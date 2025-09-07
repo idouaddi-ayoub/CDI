@@ -1,21 +1,6 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { ref } from "vue";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-
-gsap.registerPlugin(DrawSVGPlugin);
-
-const isMobileMenuOpen = ref(false);
-
-const navigationLinks = [
-  { name: "Home" },
-  { name: "Agency" },
-  { name: "Digital Product" },
-  // { name: "Tools", href: "/tools" },
-  { name: "Our events" },
-  { name: "About us" },
-  { name: "Contact us" },
-];
 
 const isAtTop = ref(true);
 

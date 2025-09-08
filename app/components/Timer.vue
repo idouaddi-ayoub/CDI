@@ -4,7 +4,7 @@ import { useCountdown } from "#imports";
 import { onMounted } from "vue";
 import { gsap } from "gsap";
 
-const targetDate = new Date("September 12, 2025 0:00:00");
+const targetDate = new Date("September 11, 2025 11:00:00");
 
 const { days, hours, minutes, seconds, isFinished } = useCountdown(targetDate);
 

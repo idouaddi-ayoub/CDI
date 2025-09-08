@@ -3,9 +3,6 @@ import bgImg from "../assets/webp/hero-bg.webp";
 import { onMounted } from "vue";
 import { gsap } from "gsap";
 
-const heroRef = ref(null);
-defineExpose({ heroRef });
-
 onMounted(() => {
   const path = document.querySelector<SVGPathElement>(".lock-shape");
   if (!path) return;
@@ -20,15 +17,6 @@ onMounted(() => {
     ease: "back.out(1.7)",
   });
 
-  gsap.to(heroRef.value, {
-    filter: "blur(40px)",
-    duration: 3,
-    yoyo: true,
-    repeat: -1,
-    ease: "sine.inOut",
-  });
-
-  // Initial state: invisible path
   gsap.set(path, {
     strokeDasharray: length,
     strokeDashoffset: length,
@@ -115,7 +103,9 @@ onMounted(() => {
         />
       </svg>
       <div class="absolute bottom-10 inset-x-0 flex justify-center z-20">
-        <Timer />
+        <ClientOnly>
+          <Timer />
+        </ClientOnly>
       </div>
     </div>
   </div>

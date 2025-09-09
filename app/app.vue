@@ -4,8 +4,8 @@ import { Analytics } from "@vercel/analytics/nuxt";
 <template>
   <UApp>
     <NuxtRouteAnnouncer />
+    <Analytics />
     <NuxtLayout>
-      <Analytics />
       <NuxtPage />
     </NuxtLayout>
   </UApp>

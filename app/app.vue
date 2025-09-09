@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/nuxt";
     <NuxtRouteAnnouncer />
     <Analytics />
     <NuxtLayout>
+      <Analytics />
       <NuxtPage />
     </NuxtLayout>
   </UApp>

@@ -8,7 +8,45 @@
         >
           <div class="flex flex-col gap-6">
             <a href="/" class="flex justify-center md:justify-start">
-              <img src="../assets/png/logo_byd.png" class="h-16 p-3" />
+              <svg viewBox="-5 0 100 100" width="70">
+                <g id="main-shapes">
+                  <path
+                    class="shape"
+                    fill="none"
+                    stroke="none"
+                    stroke-width="0.2"
+                    d="M60 20 H25 L0 75 L62.5 75 L67.5 65 L16 65 L32.5 30 L55 30Z"
+                  />
+                  <path
+                    class="shape"
+                    fill="none"
+                    stroke="none"
+                    stroke-width="0.2"
+                    d="M75 20 H65 L57.5 35 L35 35 L41 42.5 L55 42.5 L49.5 53 L55 60 L55 60Z"
+                  />
+                  <path
+                    class="shape"
+                    fill="none"
+                    stroke="none"
+                    stroke-width="0.2"
+                    d="M22.5 60 L55 60 L49.5 53 L36 53 L41 42.5 L35 35Z"
+                  />
+                  <path
+                    class="shape"
+                    fill="none"
+                    stroke="none"
+                    stroke-width="0.2"
+                    d="M90 20 H80 L75 30 L85 30Z"
+                  />
+                  <path
+                    class="shape"
+                    fill="none"
+                    stroke="none"
+                    stroke-width="0.2"
+                    d="M82.5 35 H72.5 L60 60 L70 60Z"
+                  />
+                </g>
+              </svg>
             </a>
             <div>
               <p class="text-lg text-center md:text-left">
@@ -19,23 +57,39 @@
             <div
               class="flex flex-row justify-center items-center gap-4 md:text-left w-full pt-5"
             >
-              <a href="#" class="flex flex-col justify-center items-center">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/company/cdi-encg-agadir/posts/"
+                class="flex flex-col justify-center items-center"
+              >
                 <img
                   src="../assets/svg/linkedin.svg"
                   class="w-8 transition-all duration-300 hover:brightness-200"
                 />
               </a>
-              <a href="#" class="flex flex-col justify-center items-center">
+              <a
+                target="_blank"
+                href="https://web.facebook.com/cdi.encga"
+                class="flex flex-col justify-center items-center"
+              >
                 <img
                   src="../assets/svg/facebook-color.svg"
                   class="w-8 transition-all duration-300 hover:brightness-200"
               /></a>
-              <a href="#" class="flex flex-col justify-center items-center">
+              <a
+                target="_blank"
+                href="https://www.instagram.com/cdi_encgagadir/"
+                class="flex flex-col justify-center items-center"
+              >
                 <img
                   src="../assets/svg/instagram-1-svgrepo-com.svg"
                   class="w-8 transition-all duration-300 hover:brightness-200"
               /></a>
-              <a href="#" class="flex flex-col justify-center items-center">
+              <a
+                target="_blank"
+                href="https://www.tiktok.com/@cdi_encgagadir"
+                class="flex flex-col justify-center items-center"
+              >
                 <img
                   src="../assets/svg/tiktok.svg"
                   class="w-8 transition-all duration-300 hover:brightness-200"
@@ -48,44 +102,43 @@
           <div class="flex flex-col gap-3 text-center md:text-left w-full">
             <h2 class="flex flex-col text-xl font-bold">Quick Links</h2>
             <div class="flex flex-col text-gray-500 gap-3">
-              <a href="#" class="hover:text-gray-300 md:w-fit">Home</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">What We Do</a>
-              <!-- <a href="#" class="hover:text-gray-300 md:w-fit">Tools</a> -->
-              <a href="#" class="hover:text-gray-300 md:w-fit">Agency</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">About Us</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">Contact Us</a>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="flex gap-6 w-full">
-          <div class="flex flex-col gap-3 text-center md:text-left w-full">
-            <h2 class="flex flex-col text-xl font-bold">Ressources</h2>
-            <div class="flex flex-col text-gray-500 gap-3">
-              <a href="#" class="hover:text-gray-300 md:w-fit">Documentation</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">Tutorials</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">Blogs</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit">Open Source</a>
-              <a href="#" class="hover:text-gray-300 md:w-fit"
-                >Community Forum</a
+              <a href="/" class="hover:text-gray-300 md:w-fit">Home</a>
+              <a href="/agency" class="hover:text-gray-300 md:w-fit">Agency</a>
+              <a href="/digital" class="hover:text-gray-300 md:w-fit"
+                >Digital Product</a
+              >
+              <a href="/contactus" class="hover:text-gray-300 md:w-fit"
+                >Contact Us</a
               >
             </div>
           </div>
-        </div> -->
+        </div>
+
         <div class="flex gap-6 w-full">
           <div
             class="flex flex-col gap-4 md:gap-6 text-center md:text-left w-full"
           >
             <h2 class="flex flex-col text-xl font-bold">Contact Us</h2>
             <div class="flex flex-col text-gray-500 gap-3">
-              <a href="#" class="hover:text-gray-300"
-                >ENCG Agadir, Agadir, Morocco</a
+              <a
+                href="https://maps.app.goo.gl/jSxZgtFuSV6F9GHWA"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-gray-300 md:w-fit"
               >
-              <a href="#" class="hover:text-gray-300 md:w-fit"
-                >cdiencga.info@gmail.com</a
+                ENCG, Agadir, Morocco
+              </a>
+
+              <a
+                href="mailto:cdiencga.info@gmail.com"
+                class="hover:text-gray-300 md:w-fit"
               >
-              <a href="#" class="hover:text-gray-300 md:w-fit"
-                >+212 6-59-41-97-05</a
-              >
+                cdiencga.info@gmail.com
+              </a>
+
+              <a href="tel:+212659419705" class="hover:text-gray-300 md:w-fit">
+                +212 6‑59‑41‑97‑05
+              </a>
             </div>
           </div>
         </div>

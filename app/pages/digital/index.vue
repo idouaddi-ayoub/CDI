@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Hero from "./hero.vue";
-import Events from "./events.vue";
+import Card from "./cards.vue";
 </script>
 <template>
   <Hero />
-  <Events />
+  <Card />
 </template>

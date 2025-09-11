@@ -60,7 +60,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 <template>
   <div
-    class="relative flex justify-center items-center bg-gradient-to-b to-green-dark"
+    class="relative flex justify-center items-center bg-gradient-to-b from-green-dark to-green-dark"
   >
     <div class="text-center font-bold sm:pt-20 sm:pb-20 pt-5 pb-10">
       <div class="text-3xl sm:text-7xl">

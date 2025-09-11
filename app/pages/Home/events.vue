@@ -15,7 +15,7 @@ import { UBadge, UContainer, UIcon } from "#components";
         <span class="md:block"> shaped by our community. </span>
       </p>
       <UContainer
-        class="flex flex-col sm:flex-row bg-black rounded-4xl text-center sm:text-left justify-center items-center gap-10 p-10 mt-5"
+        class="flex flex-col sm:flex-row bg-black rounded-4xl text-center sm:text-left justify-center items-center gap-10 p-10 mt-10"
       >
         <div class="flex-1 flex-col text-lg font-light">
           <div class="flex justify-center md:justify-start">
@@ -33,26 +33,16 @@ import { UBadge, UContainer, UIcon } from "#components";
               for a day of learning and networking.
             </span>
           </div>
-
-          <div class="flex mt-5">
-            <span class="md:block">
-              <UIcon
-                name="solar:calendar-line-duotone"
-                class="size-5 text-green-700"
-              />
-              for a day of learning and networking.
-            </span>
-            <span class="md:block">
-              <UIcon
-                name="solar:calendar-line-duotone"
-                class="size-5 text-green-700"
-              />
-              for a day of learning and networking.
-            </span>
-          </div>
+          <a href="/events">
+            <UButton
+              class="mt-5 cursor-pointer"
+              label="See more"
+              color="primary"
+            />
+          </a>
         </div>
         <div class="flex-1">
-          <img src="../../assets/webp/aboutus-img.webp" class="rounded-2xl" />
+          <img src="../../assets/webp/thumbnail.webp" class="rounded-2xl" />
         </div>
       </UContainer>
     </div>

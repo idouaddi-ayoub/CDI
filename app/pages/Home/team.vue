@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { UContainer } from "#components";
-import President from "../../assets/jpg/PlaceHolder.jpg";
-import vicePresident from "../../assets/jpg/PlaceHolder.jpg";
-import generalSecretary from "../../assets/jpg/PlaceHolder.jpg";
-import humanResources from "../../assets/jpg/PlaceHolder.jpg";
-import Treasurer from "../../assets/jpg/PlaceHolder.jpg";
-import headOfCommunication from "../../assets/jpg/PlaceHolder.jpg";
-import headOfDesign from "../../assets/jpg/PlaceHolder.jpg";
-import headOfLogistics from "../../assets/jpg/PlaceHolder.jpg";
-import Advisor from "../../assets/jpg/PlaceHolder.jpg";
+import President from "../../assets/png/bureau/Yasser_Orchy.png";
+import vicePresident from "../../assets/png/bureau/Nizar_Ramadane.png";
+import generalSecretary from "../../assets/png/bureau/Yousra_Bouqfa.png";
+import humanResources from "../../assets/png/bureau/Hiba_Bairouk.png";
+import Treasurer from "../../assets/png/bureau/Abderrahmane_Bougag.png";
+import headOfCommunication from "../../assets/png/bureau/Wail_Sebbar.png";
+import headOfDesign from "../../assets/png/bureau/Rachad_Azara.png";
+import headOfLogistics from "../../assets/png/bureau/Salma_Cheddadi.png";
+import Advisor from "../../assets/png/bureau/Yassine_Regrag.png";
 
 const teamMembers = [
   {

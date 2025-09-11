@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { UBadge, UContainer, UIcon } from "#components";
+import EDAY_MOVIE from "../../assets/webm/Cdi-movie.webm";
+
 const items = [
-  "https://picsum.photos/640/640?random=1",
-  "https://picsum.photos/640/640?random=2",
-  "https://picsum.photos/640/640?random=3",
-  "https://picsum.photos/640/640?random=4",
-  "https://picsum.photos/640/640?random=5",
-  "https://picsum.photos/640/640?random=6",
+  "assets/webp/DSC07550.webp",
+  "assets/webp/DSC07564.webp",
+  "assets/webp/DSC07803.webp",
+  "assets/webp/DSC07911.webp",
+  "assets/webp/DSC07975.webp",
 ];
 </script>
 <template>
@@ -28,7 +29,7 @@ const items = [
           <div class="flex md:justify-start">
             <UBadge
               label="CONFERENCE"
-              class="font-semibold text-xl text-white"
+              class="bg-green-600/20 text-xl text-green-400 px-4 py-1 rounded-full w-fit mb-4"
             />
           </div>
           <h1 class="text-4xl font-bold mt-5 mb-5">E-DAY 3.0</h1>
@@ -42,7 +43,7 @@ const items = [
             </span>
           </div>
 
-          <div class="flex mt-5 justify-around p-4">
+          <div class="flex mt-5 justify-between p-4">
             <div class="flex md:block">
               <div class="flex items-center gap-4">
                 <UIcon
@@ -58,37 +59,42 @@ const items = [
             <div class="flex md:block">
               <div class="flex items-center gap-4">
                 <UIcon
-                  name="solar:calendar-line-duotone"
+                  name="solar:map-point-broken"
                   class="size-5 text-green-700"
                 />
                 <div>
-                  <p class="font-semibold text-gray-500">Date</p>
-                  <p class="font-bold">March 25, 2023</p>
+                  <p class="font-semibold text-gray-500">Location</p>
+                  <p class="font-bold">ENCG Agadir</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex-1">
-          <img src="../../assets/webp/aboutus-img.webp" class="rounded-2xl" />
-        </div>
-      </UContainer>
-      <UContainer
-        class="flex-1 flex-col text-lg font-light rounded-2xl border-1 border-gray-600 bg-black/50 backdrop-blur-lg p-5 w-fit h-fit"
-      >
-        <div class="flex md:justify-start">
-          <UBadge
-            label="EVENT GALLERY"
-            class="font-semibold text-xl text-white"
+        <div
+          class="flex flex-1 rounded-2xl border border-gray-600 bg-black/50 backdrop-blur-lg p-5"
+        >
+          <video
+            :src="EDAY_MOVIE"
+            poster="../../assets/webp/thumbnail.webp"
+            controls
+            class="w-full h-full rounded-lg object-cover shadow-lg"
           />
         </div>
-        <UContainer class="p-5 pb-10">
-          <UCarousel v-slot="{ item }" dots :items="items" class="max-w-full">
-            <div class="flex justify-center items-center w-full h-full">
-              <img :src="item" class="rounded-lg" />
-            </div>
-          </UCarousel>
-        </UContainer>
+      </UContainer>
+      <UContainer class="p-5 pb-10">
+        <UCarousel v-slot="{ item }" dots :items="items" class="max-w-full">
+          <div
+            class="flex justify-center items-center w-full h-full aspect-video transition-transform duration-500 ease-in-out transform hover:scale-105"
+            style="will-change: transform; transform: translateZ(0)"
+          >
+            <img
+              :src="item"
+              class="w-full h-full object-cover rounded-2xl"
+              alt="carousel image"
+              loading="lazy"
+            />
+          </div>
+        </UCarousel>
       </UContainer>
     </div>
   </div>

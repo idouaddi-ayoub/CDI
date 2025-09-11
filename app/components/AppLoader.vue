@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, watchEffect } from "vue";
+import preLoaderVideo from "../assets/webm/Pre-Loader.mp4";
 
 const isLoading = ref(true);
 
@@ -14,7 +15,6 @@ onMounted(() => {
     isLoading.value = false;
   }
 
-  // Disable scroll while loader is active
   watchEffect(() => {
     if (isLoading.value) {
       document.body.style.overflow = "hidden";
@@ -32,10 +32,10 @@ const handleVideoEnd = () => {
 <template>
   <div
     v-if="isLoading"
-    class="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
+    class="fixed inset-0 z-[9999] flex object-cover justify-center items-stretch bg-black"
   >
     <video id="loader-video" autoplay muted @ended="handleVideoEnd">
-      <source src="/mp4/videoplayback.mp4" type="video/mp4" />
+      <source :src="preLoaderVideo" type="video/mp4" />
     </video>
   </div>
 

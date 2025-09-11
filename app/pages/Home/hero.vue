@@ -18,9 +18,9 @@ defineExpose({ heroRef });
       class="relative z-10 flex justify-center items-center h-screen mr-10 ml-10"
     >
       <div class="text-center text-3xl sm:text-7xl font-bold">
-        <h1>BECOME MORE WITH<br /></h1>
-        <p class="text-green-default">CDI ENCG Agadir</p>
-        <p class="text-lg sm:text-2xl pt-10">
+        <h1 class="HeroHomeTitle">BECOME MORE WITH<br /></h1>
+        <p class="HeroHomeTitle text-green-default">CDI ENCG Agadir</p>
+        <p class="HeroHomeTitle text-lg sm:text-2xl pt-10">
           <span class="md:block">
             A community of digital innovators sharing experiences,
           </span>
@@ -29,18 +29,19 @@ defineExpose({ heroRef });
           </span>
         </p>
         <div
-          class="flex items-center justify-center flex-col sm:flex-row gap-5 pt-10 left-10 right-10"
+          class="HeroHomeButon flex items-center justify-center flex-col sm:flex-row gap-5 pt-10 left-10 right-10"
         >
-          <UButton
-            label="Get Free Canva Pro"
-            size="xl"
-            class="flex items-center scale-75 sm:scale-125 justify-center bg-gradient-to-r from-[#633FE8] to-[#00C2CD] border-gray-400 hover:sm:scale-150 duration-300 transition-all"
-          >
-            <template #trailing>
-              <img src="/ico/canva.ico" alt="Custom Icon" class="w-10 h-10" />
-            </template>
-          </UButton>
-
+          <a class="HeroHomeTitle" href="/digital">
+            <UButton
+              label="Get Free Canva Pro"
+              size="xl"
+              class="flex items-center cursor-pointer scale-75 sm:scale-125 justify-center bg-gradient-to-r from-[#633FE8] to-[#00C2CD] border-gray-400 hover:sm:scale-150 duration-300 transition-all"
+            >
+              <template #trailing>
+                <img src="/ico/canva.ico" alt="Custom Icon" class="w-10 h-10" />
+              </template>
+            </UButton>
+          </a>
           <!-- <UButton
             label="Join Us"
             size="xl"

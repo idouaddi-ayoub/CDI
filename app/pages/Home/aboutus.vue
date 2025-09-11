@@ -13,10 +13,10 @@ import { UContainer } from "#components";
         <span class="md:block"> empowering the next generation </span>
       </p>
       <UContainer
-        class="flex flex-col sm:flex-row text-center sm:text-left justify-center items-center gap-10"
+        class="flex flex-col sm:flex-row text-center sm:text-left justify-center items-center gap-10 mt-10"
       >
         <div class="pt-5">
-          <img src="../../assets/webp/aboutus-img.webp" class="rounded-2xl" />
+          <img src="../../assets/webp/CDI_ENCGA.webp" class="rounded-2xl" />
         </div>
         <div class="flex flex-col gap-4 text-lg font-light sm:pt-10">
           <h1 class="font-bold">Club Digital & Innovation</h1>

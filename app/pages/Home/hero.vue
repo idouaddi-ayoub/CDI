@@ -38,7 +38,11 @@ defineExpose({ heroRef });
               class="flex items-center cursor-pointer scale-75 sm:scale-125 justify-center bg-gradient-to-r from-[#633FE8] to-[#00C2CD] border-gray-400 hover:sm:scale-150 duration-300 transition-all"
             >
               <template #trailing>
-                <img src="/ico/canva.ico" alt="Custom Icon" class="w-10 h-10" />
+                <img
+                  src="../../assets/ico/canva.ico"
+                  alt="Custom Icon"
+                  class="w-10 h-10"
+                />
               </template>
             </UButton>
           </a>

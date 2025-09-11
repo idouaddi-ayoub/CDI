@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppLoaderCopy from "./components/AppLoaderCopy.vue";
-
+import { Analytics } from "@vercel/analytics/nuxt";
 useSeoMeta({
   title: "Digital Club & Innovation – Student Tech, Workshops & Hackathons",
   ogTitle: "Digital Club & Innovation – Empowering Students with Tech",
@@ -25,6 +25,7 @@ useSeoMeta({
 <template>
   <UApp>
     <NuxtRouteAnnouncer />
+    <Analytics />
     <AppLoaderCopy />
     <NuxtLayout>
       <NuxtPage />

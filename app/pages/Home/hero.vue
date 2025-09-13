@@ -28,31 +28,6 @@ defineExpose({ heroRef });
             collaborating on projects, and growing together.
           </span>
         </p>
-        <div
-          class="HeroHomeButon flex items-center justify-center flex-col sm:flex-row gap-5 pt-10 left-10 right-10"
-        >
-          <a class="HeroHomeTitle" href="/digital">
-            <UButton
-              label="Get Free Canva Pro"
-              size="xl"
-              class="flex items-center cursor-pointer scale-75 sm:scale-125 justify-center bg-gradient-to-r from-[#633FE8] to-[#00C2CD] border-gray-400 hover:sm:scale-150 duration-300 transition-all"
-            >
-              <template #trailing>
-                <img
-                  src="../../assets/ico/canva.ico"
-                  alt="Custom Icon"
-                  class="w-10 h-10"
-                />
-              </template>
-            </UButton>
-          </a>
-          <!-- <UButton
-            label="Join Us"
-            size="xl"
-            variant="ghost"
-            class="justify-center border border-white/5 w-full"
-          /> -->
-        </div>
       </div>
     </div>
   </div>

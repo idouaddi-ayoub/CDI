@@ -33,12 +33,12 @@ onMounted(() => {
     <UModal
       v-model:open="open"
       title="Buy Canva Pro"
-      description="Cotnact us to buy your Canva Pro access."
+      description="Contact us to buy your Canva Pro access."
       :ui="{ footer: 'justify-end' }"
     >
       <template #body>
         <a href="https://wa.me/212708609901">
-          <UBadge class="text-lg" label="Contac Us" />
+          <UBadge class="text-lg" label="Contact Us" />
         </a>
       </template>
     </UModal>

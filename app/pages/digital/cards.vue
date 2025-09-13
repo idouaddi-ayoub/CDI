@@ -70,8 +70,7 @@ onMounted(() => {
     <div @click="open = true" class="cursor-pointer">
       <LazyDigitalCard title="Canva Pro" :image="canva">
         <template #description>
-          <span class="line-through">20DH</span>
-          <span class="text-green-600 font-bold text-3xl"> Free</span>
+          <span class="font-bold text-3xl">20DH</span>
         </template>
       </LazyDigitalCard>
     </div>

@@ -62,6 +62,36 @@ export type Database = {
         }
         Relationships: []
       }
+      RecruitementForm: {
+        Row: {
+          created_at: string
+          day: string | null
+          email: string | null
+          fullName: string | null
+          id: number
+          phoneNumber: string | null
+          time: string | null
+        }
+        Insert: {
+          created_at?: string
+          day?: string | null
+          email?: string | null
+          fullName?: string | null
+          id?: number
+          phoneNumber?: string | null
+          time?: string | null
+        }
+        Update: {
+          created_at?: string
+          day?: string | null
+          email?: string | null
+          fullName?: string | null
+          id?: number
+          phoneNumber?: string | null
+          time?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

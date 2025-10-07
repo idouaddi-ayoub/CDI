@@ -87,7 +87,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     color: "primary",
   });
 
-  // 4️⃣ Clear fields only if successfully inserted
   Object.assign(state, {
     fullName: "",
     email: "",
@@ -119,7 +118,7 @@ onMounted(() => {
     />
     <UModal
       v-model:open="open"
-      title="Fill the the form below"
+      title="Fill the form below"
       :ui="{ footer: 'justify-end' }"
     >
       <template #body>

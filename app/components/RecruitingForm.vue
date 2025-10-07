@@ -7,7 +7,6 @@ const supabase = useSupabaseClient<Database>();
 
 const schema = z.object({
   fullName: z.string("Please enter a name"),
-  email: z.email("Invalid email address"),
   phoneNumber: z.string("Please enter 10 numbers").min(10),
   day: z.string("Day is required").min(1),
   time: z.string("Time is required").min(1),
@@ -17,7 +16,6 @@ type Schema = z.infer<typeof schema>;
 
 const state = reactive<Partial<Schema>>({
   fullName: undefined,
-  email: undefined,
   phoneNumber: undefined,
   day: undefined,
   time: undefined,
@@ -36,32 +34,60 @@ const timeOptions = [
 const toast = useToast();
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  const { fullName, email, phoneNumber, day, time } = event.data;
+  const formData = event.data;
 
-  const { error } = await supabase.from("RecruitementForm").insert([
-    {
-      fullName: fullName,
-      email: email,
-      phoneNumber: phoneNumber,
-      day: day,
-      time: time,
-    },
-  ]);
+  const phone = formData.phoneNumber.trim();
 
-  if (error) {
+  const { data: existingRows, error: checkError } = await supabase
+    .from("RecruitementForm")
+    .select("id")
+    .eq("phoneNumber", phone);
+
+  if (checkError) {
     toast.add({
-      title: "Error",
-      description: error.message,
+      title: "Error checking phone number",
+      description: checkError.message,
       color: "error",
     });
-  } else {
-    toast.add({
-      title: "Success",
-      description: "Your form has been submitted successfully!",
-      color: "primary",
-    });
+    return;
   }
 
+  if (existingRows && existingRows.length > 0) {
+    toast.add({
+      title: "Already Registered",
+      description: "This phone number is already registered.",
+      color: "warning",
+    });
+    return;
+  }
+
+  const { error: insertError } = await supabase
+    .from("RecruitementForm")
+    .insert([
+      {
+        fullName: formData.fullName,
+        phoneNumber: phone,
+        day: formData.day,
+        time: formData.time,
+      },
+    ]);
+
+  if (insertError) {
+    toast.add({
+      title: "Error submitting form",
+      description: insertError.message,
+      color: "error",
+    });
+    return;
+  }
+
+  toast.add({
+    title: "Success",
+    description: "Your form has been submitted successfully!",
+    color: "primary",
+  });
+
+  // 4️⃣ Clear fields only if successfully inserted
   Object.assign(state, {
     fullName: "",
     email: "",
@@ -112,18 +138,6 @@ onMounted(() => {
             <UInput
               v-model="state.fullName"
               placeholder="Type your full name"
-              class="w-full"
-            />
-          </UFormField>
-          <UFormField
-            label="Email*"
-            name="email"
-            class="flex flex-col gap-2"
-            :ui="{ label: 'text-sm font-medium' }"
-          >
-            <UInput
-              v-model="state.email"
-              placeholder="Type your Email"
               class="w-full"
             />
           </UFormField>

@@ -66,28 +66,25 @@ export type Database = {
         Row: {
           created_at: string
           day: string | null
-          email: string | null
-          fullName: string | null
+          fullName: string
           id: number
-          phoneNumber: string | null
+          phoneNumber: string
           time: string | null
         }
         Insert: {
           created_at?: string
           day?: string | null
-          email?: string | null
-          fullName?: string | null
+          fullName: string
           id?: number
-          phoneNumber?: string | null
+          phoneNumber: string
           time?: string | null
         }
         Update: {
           created_at?: string
           day?: string | null
-          email?: string | null
-          fullName?: string | null
+          fullName?: string
           id?: number
-          phoneNumber?: string | null
+          phoneNumber?: string
           time?: string | null
         }
         Relationships: []

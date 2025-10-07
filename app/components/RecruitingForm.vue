@@ -83,12 +83,13 @@ onMounted(() => {
 <template>
   <UContainer
     v-if="showCard"
-    class="flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-6 pb-10"
+    class="flex flex-col justify-center gap-6 pb-10 w-48"
   >
     <UButton
       label="Join Us"
       @click="open = true"
-      class="cursor-pointer text-center justify-center items-center"
+      size="xl"
+      class="cursor-pointer text-center justify-center items-center sm:scale-150"
     />
     <UModal
       v-model:open="open"

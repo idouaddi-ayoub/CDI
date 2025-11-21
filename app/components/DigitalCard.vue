@@ -2,7 +2,6 @@
 import { ref, onMounted } from "vue";
 import gsap from "gsap";
 
-// Props for dynamic content
 interface Props {
   title: string;
   description?: string;
@@ -16,6 +15,8 @@ const cardRef = ref<HTMLElement | null>(null);
 const imageRef = ref<HTMLElement | null>(null);
 const textRef = ref<HTMLElement | null>(null);
 const borderRef = ref<HTMLElement | null>(null);
+
+const isMobile = () => window.innerWidth < 768;
 
 onMounted(() => {
   if (cardRef.value && imageRef.value && textRef.value && borderRef.value) {
@@ -40,7 +41,7 @@ onMounted(() => {
       delay: 0.4,
       ease: "power3.out",
     });
-
+    if (isMobile()) return;
     gsap.to(borderRef.value, {
       opacity: 1,
       boxShadow: "0 0 30px 5px rgba(0,255,0,1)",
@@ -53,7 +54,7 @@ onMounted(() => {
 });
 
 const handleMouseEnter = (event: MouseEvent) => {
-  if (!cardRef.value || props.disabled) return;
+  if (isMobile() || !cardRef.value || props.disabled) return;
   const rect = cardRef.value.getBoundingClientRect();
   const x = (event.clientX - rect.left - rect.width / 2) / 20;
   const y = (event.clientY - rect.top - rect.height / 2) / 20;
@@ -69,7 +70,7 @@ const handleMouseEnter = (event: MouseEvent) => {
 };
 
 const handleMouseMove = (event: MouseEvent) => {
-  if (!cardRef.value || props.disabled) return;
+  if (isMobile() || !cardRef.value || props.disabled) return;
   const rect = cardRef.value.getBoundingClientRect();
   const x = (event.clientX - rect.left - rect.width / 2) / 20;
   const y = (event.clientY - rect.top - rect.height / 2) / 20;
@@ -77,7 +78,7 @@ const handleMouseMove = (event: MouseEvent) => {
 };
 
 const handleMouseLeave = () => {
-  if (!cardRef.value || props.disabled) return;
+  if (isMobile() || !cardRef.value || props.disabled) return;
   gsap.to(cardRef.value, {
     scale: 1,
     rotateX: 0,
@@ -93,7 +94,7 @@ const handleMouseLeave = () => {
   <UContainer>
     <div
       ref="cardRef"
-      class="w-80 h-96 bg-gradient-to-tr bg-black rounded-2xl overflow-hidden relative border border-green-300 scale-75 sm:scale-100"
+      class="w-80 h-96 bg-gradient-to-tr bg-black rounded-2xl overflow-hidden relative border border-green-300 scale-90 sm:scale-100"
       :class="[
         props.disabled
           ? 'grayscale opacity-50 cursor-not-allowed '

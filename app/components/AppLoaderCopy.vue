@@ -6,6 +6,10 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const preloaderReady = ref(false);
 
+gsap.config({
+  nullTargetWarn: false,
+});
+
 onMounted(() => {
   document.body.style.overflow = "hidden";
 
@@ -116,7 +120,7 @@ onMounted(() => {
       duration: 0.8,
       onComplete: () => {
         showPreloader.value = false;
-        document.body.style.overflow = ""; // restore scroll
+        document.body.style.overflow = "";
       },
     });
   });

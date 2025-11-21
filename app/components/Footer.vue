@@ -7,7 +7,7 @@
           class="flex flex-col w-full md:flex-row justify-between items-start gap-6"
         >
           <div class="flex flex-col gap-6">
-            <a href="/" class="flex justify-center md:justify-start">
+            <a href="/" class="flex justify-center md:justify-start md:w-fit">
               <img
                 src="../assets/png/CDI.png"
                 class="w-20 transition-all duration-300 hover:brightness-200"

@@ -8,45 +8,10 @@
         >
           <div class="flex flex-col gap-6">
             <a href="/" class="flex justify-center md:justify-start">
-              <svg viewBox="-5 0 100 100" width="70">
-                <g id="main-shapes">
-                  <path
-                    class="shape"
-                    fill="none"
-                    stroke="none"
-                    stroke-width="0.2"
-                    d="M60 20 H25 L0 75 L62.5 75 L67.5 65 L16 65 L32.5 30 L55 30Z"
-                  />
-                  <path
-                    class="shape"
-                    fill="none"
-                    stroke="none"
-                    stroke-width="0.2"
-                    d="M75 20 H65 L57.5 35 L35 35 L41 42.5 L55 42.5 L49.5 53 L55 60 L55 60Z"
-                  />
-                  <path
-                    class="shape"
-                    fill="none"
-                    stroke="none"
-                    stroke-width="0.2"
-                    d="M22.5 60 L55 60 L49.5 53 L36 53 L41 42.5 L35 35Z"
-                  />
-                  <path
-                    class="shape"
-                    fill="none"
-                    stroke="none"
-                    stroke-width="0.2"
-                    d="M90 20 H80 L75 30 L85 30Z"
-                  />
-                  <path
-                    class="shape"
-                    fill="none"
-                    stroke="none"
-                    stroke-width="0.2"
-                    d="M82.5 35 H72.5 L60 60 L70 60Z"
-                  />
-                </g>
-              </svg>
+              <img
+                src="../assets/png/CDI.png"
+                class="w-20 transition-all duration-300 hover:brightness-200"
+              />
             </a>
             <div>
               <p class="text-lg text-center md:text-left">

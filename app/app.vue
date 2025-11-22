@@ -8,7 +8,7 @@ useSeoMeta({
   ogUrl: "https://www.cdiencga.com/",
   ogSiteName: "CDI",
   ogLocale: "en_MA",
-  ogImage: "https://www.cdiencga.com/_nuxt/CDI.DpGS1X3P.png", // Change this to CDI_LOGO
+  ogImage: "https://www.cdiencga.com/_nuxt/CDI.BCAkHOc0.png",
   ogImageAlt: "CDI logo",
   description:
     "Empowering students through technology, innovation, and community. Join our tech talks & hands‑on workshops.",
@@ -18,7 +18,7 @@ useSeoMeta({
   twitterTitle: "Digital Club & Innovation – Student Tech Hub",
   twitterDescription:
     "Digital talks, workshops & a vibrant community for student innovators.",
-  twitterImage: "https://www.cdiencga.com/_nuxt/CDI.DpGS1X3P.png", // Change this to CDI_LOGO
+  twitterImage: "https://www.cdiencga.com/_nuxt/CDI.BCAkHOc0.png",
   robots: "index, follow",
 });
 </script>

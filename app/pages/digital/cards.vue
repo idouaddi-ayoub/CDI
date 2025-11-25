@@ -56,14 +56,14 @@ onMounted(() => {
         <template #description>
           <div class="grid grid-cols-2 gap-y-1">
             <span class="font-bold text-xl text-gray-400">1 month</span>
-            <span class="font-bold text-xl text-gray-400 text-right">50DH</span>
+            <span class="font-bold text-xl text-gray-400 text-right">45DH</span>
             <span class="font-bold text-xl text-gray-400">6 months</span>
             <span class="font-bold text-xl text-gray-400 text-right"
-              >120DH</span
+              >110DH</span
             >
             <span class="font-bold text-xl text-gray-400">12 months</span>
             <span class="font-bold text-xl text-gray-400 text-right"
-              >200DH</span
+              >150DH</span
             >
           </div>
         </template>
@@ -86,14 +86,14 @@ onMounted(() => {
         <template #description>
           <div class="grid grid-cols-2 gap-y-1">
             <span class="font-bold text-xl text-gray-400">1 month</span>
-            <span class="font-bold text-xl text-gray-400 text-right">50DH</span>
+            <span class="font-bold text-xl text-gray-400 text-right">45DH</span>
             <span class="font-bold text-xl text-gray-400">6 months</span>
             <span class="font-bold text-xl text-gray-400 text-right"
               >120DH</span
             >
             <span class="font-bold text-xl text-gray-400">12 months</span>
             <span class="font-bold text-xl text-gray-400 text-right"
-              >200DH</span
+              >160DH</span
             >
           </div>
         </template>
@@ -117,14 +117,14 @@ onMounted(() => {
         <template #description>
           <div class="grid grid-cols-2 gap-y-1">
             <span class="font-bold text-xl text-gray-400">1 month</span>
-            <span class="font-bold text-xl text-gray-400 text-right">60DH</span>
+            <span class="font-bold text-xl text-gray-400 text-right">50DH</span>
             <span class="font-bold text-xl text-gray-400">6 months</span>
             <span class="font-bold text-xl text-gray-400 text-right"
-              >170DH</span
+              >120DH</span
             >
             <span class="font-bold text-xl text-gray-400">12 months</span>
             <span class="font-bold text-xl text-gray-400 text-right"
-              >220DH</span
+              >160DH</span
             >
           </div>
         </template>
@@ -178,14 +178,6 @@ onMounted(() => {
           <div class="grid grid-cols-2 gap-y-1">
             <span class="font-bold text-xl text-gray-400">1 month</span>
             <span class="font-bold text-xl text-gray-400 text-right">40DH</span>
-            <span class="font-bold text-xl text-gray-400">6 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >100DH</span
-            >
-            <span class="font-bold text-xl text-gray-400">12 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >170DH</span
-            >
           </div>
         </template>
       </LazyDigitalCard>

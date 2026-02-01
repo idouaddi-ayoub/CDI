@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "generate:types": "pnpx supabase gen types typescript --project-id yisyuveoxvksrkmilrli --schema public > types/supabase.ts"
   },
   "dependencies": {
     "@nuxt/image": "1.11.0",

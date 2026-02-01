@@ -16,7 +16,6 @@ const chatgpt = ref(false);
 const perplexity = ref(false);
 const gemini = ref(false);
 const netflix = ref(false);
-const spotify = ref(false);
 
 onMounted(() => {
   setTimeout(() => {
@@ -27,7 +26,7 @@ onMounted(() => {
 <template>
   <UContainer
     v-if="showCard"
-    class="flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-6 pb-10"
+    class="flex flex-col items-center justify-center md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-6 pb-10"
   >
     <div @click="canva = true" class="cursor-pointer">
       <LazyDigitalCard title="Canva Pro" :image="Canva">
@@ -57,14 +56,6 @@ onMounted(() => {
           <div class="grid grid-cols-2 gap-y-1">
             <span class="font-bold text-xl text-gray-400">1 month</span>
             <span class="font-bold text-xl text-gray-400 text-right">45DH</span>
-            <span class="font-bold text-xl text-gray-400">6 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >110DH</span
-            >
-            <span class="font-bold text-xl text-gray-400">12 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >150DH</span
-            >
           </div>
         </template>
       </LazyDigitalCard>
@@ -87,14 +78,6 @@ onMounted(() => {
           <div class="grid grid-cols-2 gap-y-1">
             <span class="font-bold text-xl text-gray-400">1 month</span>
             <span class="font-bold text-xl text-gray-400 text-right">45DH</span>
-            <span class="font-bold text-xl text-gray-400">6 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >120DH</span
-            >
-            <span class="font-bold text-xl text-gray-400">12 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >160DH</span
-            >
           </div>
         </template>
       </LazyDigitalCard>
@@ -112,50 +95,12 @@ onMounted(() => {
       </template>
     </UModal>
 
-    <div @click="perplexity = true" class="cursor-pointer">
-      <LazyDigitalCard title="Perplexity pro" :image="Perplexity">
-        <template #description>
-          <div class="grid grid-cols-2 gap-y-1">
-            <span class="font-bold text-xl text-gray-400">1 month</span>
-            <span class="font-bold text-xl text-gray-400 text-right">50DH</span>
-            <span class="font-bold text-xl text-gray-400">6 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >120DH</span
-            >
-            <span class="font-bold text-xl text-gray-400">12 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >160DH</span
-            >
-          </div>
-        </template>
-      </LazyDigitalCard>
-    </div>
-    <UModal
-      v-model:open="perplexity"
-      title="Buy Perplexity Pro"
-      description="Contact us to buy your Perplexity Pro access."
-      :ui="{ footer: 'justify-end' }"
-    >
-      <template #body>
-        <a href="https://wa.me/212708609901">
-          <UBadge class="text-lg" label="Contact Us" />
-        </a>
-      </template>
-    </UModal>
     <div @click="gemini = true" class="cursor-pointer">
       <LazyDigitalCard v-model:open="gemini" title="Gemini Pro" :image="Gemini">
         <template #description>
           <div class="grid grid-cols-2 gap-y-1">
             <span class="font-bold text-xl text-gray-400">1 month</span>
             <span class="font-bold text-xl text-gray-400 text-right">50DH</span>
-            <span class="font-bold text-xl text-gray-400">6 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >170DH</span
-            >
-            <span class="font-bold text-xl text-gray-400">12 months</span>
-            <span class="font-bold text-xl text-gray-400 text-right"
-              >250DH</span
-            >
           </div>
         </template>
       </LazyDigitalCard>
@@ -172,28 +117,22 @@ onMounted(() => {
         </a>
       </template>
     </UModal>
-    <div @click="netflix = true" class="cursor-pointer">
-      <LazyDigitalCard title="Netflix" :image="Netflix">
-        <template #description>
-          <div class="grid grid-cols-2 gap-y-1">
-            <span class="font-bold text-xl text-gray-400">1 month</span>
-            <span class="font-bold text-xl text-gray-400 text-right">40DH</span>
-          </div>
-        </template>
-      </LazyDigitalCard>
-    </div>
-    <UModal
-      v-model:open="netflix"
-      title="Buy Netflix"
-      description="Contact us to buy your Netflix access."
-      :ui="{ footer: 'justify-end' }"
+
+    <LazyDigitalCard
+      title="Perplexity pro"
+      description="Coming Soon..."
+      :image="Perplexity"
+      disabled
+    />
+
+    <LazyDigitalCard
+      title="Netflix"
+      :image="Netflix"
+      description="Coming Soon..."
+      disabled
     >
-      <template #body>
-        <a href="https://wa.me/212708609901">
-          <UBadge class="text-lg" label="Contact Us" />
-        </a>
-      </template>
-    </UModal>
+    </LazyDigitalCard>
+
     <LazyDigitalCard
       title="Spotify"
       description="Coming Soon..."

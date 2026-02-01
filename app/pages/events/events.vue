@@ -77,6 +77,8 @@ const items = [
             :src="EDAY_MOVIE"
             poster="../../assets/webp/thumbnail.webp"
             controls
+            playsinline
+            controlsList="nofullscreen"
             class="w-full h-full rounded-lg object-cover shadow-lg"
           />
         </div>

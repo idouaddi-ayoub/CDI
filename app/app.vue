@@ -2,7 +2,7 @@
 import AppLoaderCopy from "./components/AppLoaderCopy.vue";
 import { Analytics } from "@vercel/analytics/nuxt";
 useSeoMeta({
-  title: "Digital Club & Innovation – Student Tech, Workshops & Hackathons",
+  title: "CDI",
   ogTitle: "Digital Club & Innovation – Empowering Students with Tech",
   ogType: "website",
   ogUrl: "https://www.cdiencga.com/",

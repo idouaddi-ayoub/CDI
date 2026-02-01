@@ -117,17 +117,7 @@ onUnmounted(() => {
             </a>
           </div>
         </div>
-        <div class="relative hidden lg:block">
-          <!-- <UButton
-            icon="tabler-arrow-narrow-right"
-            label="Get Canva"
-            size="xl"
-            color="primary"
-            variant="solid"
-            class="rounded-4xl"
-            trailing
-          /> -->
-        </div>
+        <div />
         <div class="md:hidden flex items-center">
           <UButton
             icon="i-lucide-menu"
@@ -153,17 +143,7 @@ onUnmounted(() => {
           {{ link.name }}
         </a>
       </div>
-      <div class="relative lg:block">
-        <!-- <UButton
-          icon="tabler-arrow-narrow-right"
-          label="Get Canva"
-          size="xl"
-          color="primary"
-          variant="solid"
-          class="rounded-4xl m-5"
-          trailing
-        /> -->
-      </div>
+      <div class="relative lg:block"></div>
     </div>
   </nav>
 </template>

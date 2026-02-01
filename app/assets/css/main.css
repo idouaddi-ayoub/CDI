@@ -1,2 +1,19 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme static {
+  --color-green-default: #1cc83b;
+  --color-green-dark: #021d0b;
+}
+
+@theme default {
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #b6ffd6;
+  --text-color-neutral: #ffffff;
+  --text-color-muted: gray;
+  --text-color-toned: blue;
+  --text-color-default: #ffffff;
+  --text-color-highlighted: #ffffff;
+  --text-color-inverted: black;
+  --ui-bg: black;
+}

@@ -28,11 +28,11 @@ defineExpose({ heroRef });
             collaborating on projects, and growing together.
           </span>
         </p>
-        <div
+        <!-- <div
           class="flex HeroHomeTitle items-center justify-center flex-col sm:flex-row gap-5 pt-10 left-10 right-10"
         >
           <EDAY />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

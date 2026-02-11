@@ -39,7 +39,6 @@ onMounted(() => {
 });
 
 const eventDate = new Date("2026-02-14T09:00:00");
-
 const now = useNow({ interval: 1000 });
 
 const time = computed(() => {
@@ -63,6 +62,7 @@ const time = computed(() => {
     <div
       class="absolute inset-x-0 h-full bg-gradient-to-t from-black to-transparent"
     />
+
     <div
       class="relative z-10 max-w-4xl mx-auto text-center px-6 space-y-8 items-center 2xl:scale-150"
     >
@@ -76,7 +76,8 @@ const time = computed(() => {
           February 14, 2026 · Agadir
         </span>
       </UBadge>
-      <div>
+
+      <div class="mt-10 sm:mt-12">
         <h1
           class="text-5xl sm:text-6xl font-extrabold tracking-tight HeroHomeTitle"
         >
@@ -95,21 +96,25 @@ const time = computed(() => {
         <UBadge
           variant="outline"
           class="rounded-3xl bg-green-900/35 p-3 HeroHomeTitle"
-          ><UIcon
+        >
+          <UIcon
             name="uil:calendar-alt"
             class="size-6 text-green-700 HeroHomeTitle"
           />
-          February 14, 2026</UBadge
-        >
+          February 14, 2026
+        </UBadge>
+
         <UBadge
           variant="outline"
           class="rounded-3xl bg-green-900/35 p-3 HeroHomeTitle"
-          ><UIcon
+        >
+          <UIcon
             name="uil:clock-nine"
             class="size-6 text-green-700 HeroHomeTitle"
           />
-          14:00 – 18:30</UBadge
-        >
+          14:00 – 18:30
+        </UBadge>
+
         <UBadge
           variant="outline"
           class="rounded-3xl bg-green-900/35 p-3 HeroHomeTitle"
@@ -118,8 +123,8 @@ const time = computed(() => {
             name="solar:map-point-broken"
             class="size-6 text-green-700 HeroHomeTitle"
           />
-          ENCG, Agadir</UBadge
-        >
+          ENCG, Agadir
+        </UBadge>
       </div>
 
       <div class="flex flex-col justify-center items-center gap-4">
@@ -137,6 +142,7 @@ const time = computed(() => {
             Get Your Free Ticket
           </UButton>
         </NuxtLink>
+
         <NuxtLink to="#agenda" class="w-fit">
           <UButton variant="outline" size="lg" class="px-8 w-fit HeroHomeTitle">
             View agenda

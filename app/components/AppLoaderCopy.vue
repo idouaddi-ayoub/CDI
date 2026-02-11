@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
 import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
 
 const preloaderReady = ref(false);
 

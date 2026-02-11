@@ -140,7 +140,7 @@ const time = computed(() => {
               size="xl"
               class="px-8 HeroHomeTitle scale-125"
             >
-              Get Your Ticket
+              Get Your Free Ticket
             </UButton>
           </div>
         </NuxtLink>

@@ -2,45 +2,39 @@
 import { useNow } from "@vueuse/core";
 import gsap from "gsap";
 
-const glowBtn = ref<HTMLElement | null>(null);
-
 onMounted(() => {
-  if (!glowBtn.value) return;
+  const tl = gsap.timeline({ repeat: -1, yoyo: true, delay: 0.5 });
 
-  const tl = gsap.timeline({
-    delay: 6,
-    repeat: -1,
-    yoyo: true,
-  });
-
-  tl.to(glowBtn.value, {
+  tl.to(".ticketBtn", {
     boxShadow: `
       0 0 18px rgba(34,197,94,0.8),
       0 0 42px rgba(34,197,94,0.6),
-      0 0 90px rgba(34,197,94,0.5)
+      0 0 50px rgba(34,197,94,0.5)
     `,
-    duration: 1.6,
+    duration: 1,
     ease: "sine.inOut",
   })
-
     .to(
-      glowBtn.value,
+      ".ticketBtn",
       {
-        scale: 1.06,
+        scale: 1.03,
         duration: 1.6,
         ease: "sine.inOut",
       },
       "<"
     )
-
     .to(
-      glowBtn.value,
+      ".ticketBtn",
       {
-        y: -4,
-        duration: 1.6,
+        boxShadow: `
+        0 0 12px rgba(34,197,94,0.6),
+        0 0 28px rgba(34,197,94,0.5),
+        0 0 45px rgba(34,197,94,0.4)
+      `,
+        duration: 1,
         ease: "sine.inOut",
       },
-      "<"
+      ">"
     );
 });
 
@@ -134,15 +128,14 @@ const time = computed(() => {
           target="_blank"
           class="w-fit"
         >
-          <div ref="glowBtn" class="inline-block">
-            <UButton
-              variant="solid"
-              size="xl"
-              class="px-8 HeroHomeTitle scale-125"
-            >
-              Get Your Free Ticket
-            </UButton>
-          </div>
+          <UButton
+            ref="ticketBtn"
+            variant="solid"
+            size="xl"
+            class="px-8 HeroHomeTitle scale-125 ticketBtn"
+          >
+            Get Your Free Ticket
+          </UButton>
         </NuxtLink>
         <NuxtLink to="#agenda" class="w-fit">
           <UButton variant="outline" size="lg" class="px-8 w-fit HeroHomeTitle">
@@ -177,9 +170,5 @@ const time = computed(() => {
     ),
     linear-gradient(90deg, rgba(21, 255, 0, 0.025) 2px, transparent 1px);
   background-size: 40px 40px;
-}
-
-.HeroHomeTitle {
-  will-change: transform, box-shadow;
 }
 </style>

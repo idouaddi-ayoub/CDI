@@ -1,5 +1,48 @@
 <script setup lang="ts">
 import { useNow } from "@vueuse/core";
+import gsap from "gsap";
+
+const glowBtn = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  if (!glowBtn.value) return;
+
+  const tl = gsap.timeline({
+    delay: 6,
+    repeat: -1,
+    yoyo: true,
+  });
+
+  tl.to(glowBtn.value, {
+    boxShadow: `
+      0 0 18px rgba(34,197,94,0.8),
+      0 0 42px rgba(34,197,94,0.6),
+      0 0 90px rgba(34,197,94,0.5)
+    `,
+    duration: 1.6,
+    ease: "sine.inOut",
+  })
+
+    .to(
+      glowBtn.value,
+      {
+        scale: 1.06,
+        duration: 1.6,
+        ease: "sine.inOut",
+      },
+      "<"
+    )
+
+    .to(
+      glowBtn.value,
+      {
+        y: -4,
+        duration: 1.6,
+        ease: "sine.inOut",
+      },
+      "<"
+    );
+});
 
 const eventDate = new Date("2026-02-14T09:00:00");
 
@@ -57,45 +100,52 @@ const time = computed(() => {
       <div class="flex flex-wrap justify-center gap-3 text-sm">
         <UBadge
           variant="outline"
-          class="rounded-3xl bg-green-900/35 p-2 HeroHomeTitle"
+          class="rounded-3xl bg-green-900/35 p-3 HeroHomeTitle"
           ><UIcon
             name="uil:calendar-alt"
-            class="size-5 text-green-700 HeroHomeTitle"
+            class="size-6 text-green-700 HeroHomeTitle"
           />
           February 14, 2026</UBadge
         >
         <UBadge
           variant="outline"
-          class="rounded-3xl bg-green-900/35 p-2 HeroHomeTitle"
+          class="rounded-3xl bg-green-900/35 p-3 HeroHomeTitle"
           ><UIcon
             name="uil:clock-nine"
-            class="size-5 text-green-700 HeroHomeTitle"
+            class="size-6 text-green-700 HeroHomeTitle"
           />
           14:00 – 18:30</UBadge
         >
         <UBadge
           variant="outline"
-          class="rounded-3xl bg-green-900/35 p-2 HeroHomeTitle"
+          class="rounded-3xl bg-green-900/35 p-3 HeroHomeTitle"
         >
           <UIcon
             name="solar:map-point-broken"
-            class="size-5 text-green-700 HeroHomeTitle"
+            class="size-6 text-green-700 HeroHomeTitle"
           />
           ENCG, Agadir</UBadge
         >
       </div>
 
-      <div class="flex justify-center gap-4">
-        <UButton variant="solid" size="lg" class="px-8 HeroHomeTitle">
-          <NuxtLink
-            to="https://www.eventbrite.com/e/e-day-40-tickets-1982686658167"
-            target="_blank"
-          >
-            Get Your Ticket
-          </NuxtLink>
-        </UButton>
-        <NuxtLink to="#agenda">
-          <UButton variant="outline" size="lg" class="px-8 HeroHomeTitle">
+      <div class="flex flex-col justify-center items-center gap-4">
+        <NuxtLink
+          to="https://www.eventbrite.com/e/e-day-40-tickets-1982686658167"
+          target="_blank"
+          class="w-fit"
+        >
+          <div ref="glowBtn" class="inline-block">
+            <UButton
+              variant="solid"
+              size="xl"
+              class="px-8 HeroHomeTitle scale-125"
+            >
+              Get Your Ticket
+            </UButton>
+          </div>
+        </NuxtLink>
+        <NuxtLink to="#agenda" class="w-fit">
+          <UButton variant="outline" size="lg" class="px-8 w-fit HeroHomeTitle">
             View agenda
           </UButton>
         </NuxtLink>
@@ -127,5 +177,9 @@ const time = computed(() => {
     ),
     linear-gradient(90deg, rgba(21, 255, 0, 0.025) 2px, transparent 1px);
   background-size: 40px 40px;
+}
+
+.HeroHomeTitle {
+  will-change: transform, box-shadow;
 }
 </style>

@@ -3,10 +3,24 @@ import type { AccordionItem } from "@nuxt/ui";
 
 const items = ref<AccordionItem[]>([
   {
-    label: "Morning",
-  },
-  {
-    label: "Afternoon",
+    label: "Agenda",
+    rows: [
+      {
+        time: "13:30",
+        title: "Ticket Validation & Check-in",
+        badge: { label: "Check-in", color: "warning" },
+      },
+      {
+        time: "14:00",
+        title: "Opening Ceremony",
+        badge: { label: "Opening", color: "success" },
+      },
+      {
+        time: "14:30",
+        title: "Talks & Presentations",
+        badge: { label: "Conference", color: "primary" },
+      },
+    ],
   },
 ]);
 </script>
@@ -22,6 +36,34 @@ const items = ref<AccordionItem[]>([
         class="p-4 rounded-3xl bg-green-dark"
         :ui="{ label: 'text-xl font-semibold' }"
       >
+        <template #body="{ item }">
+          <div class="space-y-4">
+            <UContainer
+              v-for="(row, i) in item.rows"
+              :key="i"
+              class="rounded-2xl bg-[#011006] border border-green-900/30 p-4"
+            >
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                <span class="text-sm font-mono text-green-400/70 min-w-[120px]">
+                  {{ row.time }}
+                </span>
+
+                <div class="flex-1 text-white font-medium">
+                  {{ row.title }}
+                </div>
+
+                <UBadge
+                  size="sm"
+                  variant="outline"
+                  :color="row.badge.color"
+                  class="self-start sm:self-center rounded-2xl"
+                >
+                  {{ row.badge.label }}
+                </UBadge>
+              </div>
+            </UContainer>
+          </div>
+        </template>
       </UAccordion>
     </div>
   </section>

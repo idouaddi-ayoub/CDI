@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 
-const route = useRoute();
 const preloaderReady = ref(false);
 
 gsap.config({
@@ -65,23 +64,9 @@ onMounted(() => {
     });
   });
 
-  gsap.set(".blinder", {
-    yPercent: 0,
-    onComplete: () => {
-      gsap.to(".blinder", { opacity: 0, delay: 2, duration: 2 });
-    },
-  });
-
   gsap.set(".HeroHomeTitle", {
     y: 40,
     opacity: 0,
-  });
-
-  gsap.set(".mobile-blinder", {
-    xPercent: 0,
-    onComplete: () => {
-      gsap.to(".mobile-blinder", { opacity: 0, delay: 2, duration: 2 });
-    },
   });
 
   const tl = gsap.timeline({
@@ -129,30 +114,12 @@ onMounted(() => {
 
 <template>
   <div
-    v-if="route.path === '/'"
     :class="[
       'preloader fixed inset-0 flex items-center justify-center h-[100vh] w-full transition-all',
       !preloaderReady ? 'z-[9999]' : 'pointer-events-none',
     ]"
   >
     <div class="preloader-bg absolute inset-0 bg-black z-0"></div>
-    <!-- Blinders -->
-    <div class="hidden md:flex absolute top-0 w-full h-full origin-top z-10">
-      <div class="blinder flex flex-1 bg-green-900"></div>
-      <div class="blinder flex flex-1 bg-green-700"></div>
-      <div class="blinder flex flex-1 bg-green-500"></div>
-      <div class="blinder flex flex-1 bg-green-300"></div>
-    </div>
-
-    <!-- Mobile blinders -->
-    <div
-      class="md:hidden absolute top-0 left-0 w-full h-full flex flex-col z-10 overflow-hidden"
-    >
-      <div class="mobile-blinder h-1/4 w-full bg-green-900"></div>
-      <div class="mobile-blinder h-1/4 w-full bg-green-700"></div>
-      <div class="mobile-blinder h-1/4 w-full bg-green-500"></div>
-      <div class="mobile-blinder h-1/4 w-full bg-green-300"></div>
-    </div>
 
     <!-- Logo -->
     <div class="flex items-center justify-center w-full h-full relative z-20">
@@ -187,40 +154,6 @@ onMounted(() => {
             style="fill: none; stroke-width: 0.2"
             d="M82.5 35 H72.5 L60 60 L70 60Z"
           />
-        </g>
-      </svg>
-    </div>
-  </div>
-  <div
-    v-if="route.path !== '/'"
-    :class="[
-      'preloader fixed inset-0 flex items-center justify-center h-[100vh] w-full transition-all',
-      !preloaderReady ? 'z-[9999]' : 'pointer-events-none',
-    ]"
-  >
-    <div class="preloader-bg absolute inset-0 bg-black z-0"></div>
-    <!-- Logo -->
-    <div class="flex items-center justify-center w-full h-full relative z-20">
-      <svg
-        viewBox="-5 0 100 100"
-        class="w-40 h-40 md:w-56 md:h-56"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="main-shapes">
-          <path
-            class="shapePrePageloader"
-            d="M60 20 H25 L0 75 L62.5 75 L67.5 65 L16 65 L32.5 30 L55 30Z"
-          />
-          <path
-            class="shapePrePageloader"
-            d="M75 20 H65 L57.5 35 L35 35 L41 42.5 L55 42.5 L49.5 53 L55 60Z"
-          />
-          <path
-            class="shapePrePageloader"
-            d="M22.5 60 L55 60 L49.5 53 L36 53 L41 42.5 L35 35Z"
-          />
-          <path class="shapePrePageloader" d="M90 20 H80 L75 30 L85 30Z" />
-          <path class="shapePrePageloader" d="M82.5 35 H72.5 L60 60 L70 60Z" />
         </g>
       </svg>
     </div>

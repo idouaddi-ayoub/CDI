@@ -31,7 +31,7 @@
           <p class="mt-6 text-lg text-gray-400 leading-relaxed">
             Eday Event 2026 brings together the brightest minds in tech, design,
             and entrepreneurship for a full day of learning, building, and
-            connecting. Hosted at ENCG Casablanca, this is the premier
+            connecting. Hosted at ENCG Agadir, this is the premier
             student-driven tech event in Morocco.
           </p>
 

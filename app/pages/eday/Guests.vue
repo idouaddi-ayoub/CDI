@@ -15,7 +15,7 @@ type Speaker = {
 const speakers: Speaker[] = [
   {
     name: "Abadou Azelarab",
-    role: "AI Research Lead",
+    role: "Superhost and Ex Airbnb agent",
     bio: "Abadou Azelarab is a real estate and Airbnb specialist who supports property owners and investors in maximizing the performance of their short-term rentals. He focuses on strategic optimization, professional management, and digital solutions to increase occupancy, visibility, and overall rental profitability.",
     img: AbadouAzelarab,
     gradient: "from-green-400/25 via-emerald-400/15 to-teal-400/20",
@@ -32,7 +32,7 @@ const speakers: Speaker[] = [
   {
     name: "MedReda Idrissi",
     role: "Founder of Maximmo Immobilier & MonRiad",
-    bio: "Real lessons on community, momentum, and building a founder’s mindset without a perfect plan.",
+    bio: "Med Reda Idrissi is a real estate professional and the founder of Maximmo Immobilier and MonRiad. He supports buyers, sellers, and investors in navigating the Moroccan property market, with a strong focus on strategic real estate solutions and digital visibility to maximize property value and performance.",
     img: MedRedaIdrissi,
     gradient: "from-lime-400/25 via-green-400/15 to-emerald-400/20",
     accent: "from-lime-300 to-green-200",

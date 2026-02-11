@@ -91,7 +91,7 @@ const speakers: Speaker[] = [
                 <span
                   class="inline-flex items-center rounded-full border border-emerald-500/15 bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-200"
                 >
-                  Speakr
+                  Speaker
                 </span>
 
                 <h3 class="mt-4 text-lg font-semibold text-white">

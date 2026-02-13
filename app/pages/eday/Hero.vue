@@ -56,7 +56,7 @@ const time = computed(() => {
 
 <template>
   <section
-    class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white scale-90"
+    class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white"
   >
     <div class="absolute inset-0 bg-grid opacity-80" />
     <div
@@ -127,21 +127,10 @@ const time = computed(() => {
         </UBadge>
       </div>
 
-      <div class="flex flex-col justify-center items-center gap-4">
-        <NuxtLink
-          to="https://www.eventbrite.com/e/e-day-40-tickets-1982686658167"
-          target="_blank"
-          class="w-fit"
-        >
-          <UButton
-            ref="ticketBtn"
-            variant="solid"
-            size="xl"
-            class="px-8 HeroHomeTitle scale-125 ticketBtn"
-          >
-            Get Your Free Ticket
-          </UButton>
-        </NuxtLink>
+      <div
+        class="flex flex-col justify-center items-center gap-4 HeroHomeTitle"
+      >
+        <EDAY ref="ticketBtn" class="px-8 scale-125" />
 
         <NuxtLink to="#agenda" class="w-fit">
           <UButton variant="outline" size="lg" class="px-8 w-fit HeroHomeTitle">

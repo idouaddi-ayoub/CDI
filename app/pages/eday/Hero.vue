@@ -56,7 +56,7 @@ const time = computed(() => {
 
 <template>
   <section
-    class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white scale-90"
+    class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white"
   >
     <div class="absolute inset-0 bg-grid opacity-80" />
     <div

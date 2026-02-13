@@ -89,7 +89,7 @@ onMounted(() => {
       @click="open = true"
       class="relative px-10 py-5 rounded-2xl font-semibold cursor-pointer text-black bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:-translate-y-0.5"
     >
-      <span class="relative z-10">Get your free E-DAY ticket</span>
+      <span class="relative z-10">10 remaining Tickets</span>
       <span
         class="absolute inset-0 rounded-2xl bg-green-400/30 blur-xl opacity-0 hover:opacity-100 transition"
       />

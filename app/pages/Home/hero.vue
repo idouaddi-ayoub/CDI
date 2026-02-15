@@ -28,21 +28,6 @@ defineExpose({ heroRef });
             collaborating on projects, and growing together.
           </span>
         </p>
-        <div
-          class="flex HeroHomeTitle items-center justify-center flex-col sm:flex-row gap-5 pt-10 left-10 right-10"
-        >
-          <a href="/eday">
-            <UButton
-              size="xl"
-              class="relative px-10 py-5 rounded-2xl font-semibold cursor-pointer text-black bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:-translate-y-0.5"
-            >
-              <span class="relative z-10">Tickets sold out</span>
-              <span
-                class="absolute inset-0 rounded-2xl bg-green-400/30 blur-xl opacity-0 hover:opacity-100 transition"
-              />
-            </UButton>
-          </a>
-        </div>
       </div>
     </div>
   </div>

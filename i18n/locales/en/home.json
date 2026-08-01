@@ -1,0 +1,79 @@
+{
+  "hero": {
+    "line1": "Become more",
+    "line2": "with CDI",
+    "lead": "Become more with",
+    "full": "Become more with CDI",
+    "sub": "A student-run digital club at ENCG Agadir. Build real things, with real people.",
+    "ctaStudent": "Join the club",
+    "ctaBusiness": "Work with us",
+    "scroll": "Scroll",
+    "since": "Est. 2018"
+  },
+  "paths": {
+    "eyebrow": "Two ways in",
+    "title": "Which one are you?",
+    "student": {
+      "title": "I'm a student",
+      "body": "Learn to code, design, and pitch. Build real projects, meet people who make things, and put something on your CV before you graduate.",
+      "cta": "Join the club"
+    },
+    "business": {
+      "title": "I'm a business",
+      "body": "Partner with us, sponsor an event, or hire a team of sharp students for your next digital project — web, design, branding, or content.",
+      "cta": "Start a conversation"
+    }
+  },
+  "proof": {
+    "eyebrow": "Seven years in",
+    "stats": {
+      "founded": "Founded",
+      "members": "Members",
+      "events": "Events run",
+      "eday": "E-DAY editions"
+    },
+    "quote": "CDI is where I went from writing my first line of code to leading a project team. It changed what I thought I was capable of.",
+    "quoteBy": "A CDI member"
+  },
+  "events": {
+    "eyebrow": "Our flagship event",
+    "title": "E-DAY",
+    "edition": "3.0",
+    "body": "A full day of talks, workshops, and networking with industry professionals, developers, and designers. Our biggest stage — and a chance for partners to reach hundreds of students.",
+    "ctaSee": "See our events",
+    "ctaSponsor": "Sponsor the next one"
+  },
+  "finalCta": {
+    "title": "Ready to become more?",
+    "sub": "Whether you want to join or work with us, we're one message away.",
+    "ctaStudent": "Join the club",
+    "ctaBusiness": "Get in touch"
+  },
+  "nav": {
+    "home": "Home",
+    "paths": "Join",
+    "proof": "About",
+    "event": "E-DAY",
+    "contact": "Contact",
+    "cta": "Join the club",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "sections": {
+    "hero": "Intro",
+    "paths": "Two ways in",
+    "proof": "Track record",
+    "event": "E-DAY",
+    "contact": "Get in touch"
+  },
+  "loader": {
+    "label": "Loading"
+  },
+  "footer": {
+    "club": "The club",
+    "agency": "The agency",
+    "contact": "Contact",
+    "location": "ENCG Agadir, Morocco",
+    "rights": "All rights reserved."
+  }
+}

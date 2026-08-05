@@ -22,12 +22,9 @@ onMounted(() => {
                 scrollTrigger: {
                     trigger: root.value!,
                     start: "top top",
-                    end: "+=120%",
+                    end: "+=60%",
                     pin: true,
                     scrub: 0.5,
-                    // Second of the page's two pins: measured after the hero
-                    // has laid down its spacer, before anything that sits
-                    // below this section. See the note on the hero's pin.
                     refreshPriority: 1,
                 },
             });
@@ -39,8 +36,8 @@ onMounted(() => {
                 0,
             ).fromTo(
                 edition.value!,
-                { yPercent: 22 },
-                { yPercent: -22, ease: "none", duration: 1 },
+                { yPercent: 12 },
+                { yPercent: -12, ease: "none", duration: 1 },
                 0,
             );
         } else {

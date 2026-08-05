@@ -25,7 +25,7 @@ let ctx: gsap.Context | undefined;
  *
  * A trigger measures its element's *natural* box, which for the two pinned
  * sections is only the first screenful of a range that lasts another 150% /
- * 120% — so "hero" would hand off to "paths" while the hero still fills the
+ * 60% — so "hero" would hand off to "paths" while the hero still fills the
  * screen. A pinned section is `position: fixed`, so its rect is where it
  * actually is on screen, which is exactly what this label claims to report.
  */

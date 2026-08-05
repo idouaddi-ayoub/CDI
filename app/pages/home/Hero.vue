@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useFps } from "@vueuse/core";
-import Scene from "@/components/Scene.vue";
 import { LINKS, EXTERNAL_ATTRS } from "@/utils/links";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -17,8 +16,6 @@ const sub = useTemplateRef<HTMLParagraphElement>("sub");
 const cta = useTemplateRef<HTMLDivElement>("cta");
 
 const scrollProgress = ref(0);
-
-const gl = { clearColor: "#000000", alpha: true, antialias: true };
 
 const fps = useFps({ every: 10 });
 const FPS_FLOOR = 30;
@@ -129,23 +126,7 @@ onBeforeUnmount(() => ctx?.revert());
     >
         <div v-if="rendersCanvas" class="absolute inset-0 -z-10">
             <ClientOnly>
-                <TresCanvas v-bind="gl" :dpr="isFull ? [1, 1.75] : [1, 1.5]">
-                    <Suspense>
-                        <Scene :scroll="scrollProgress" />
-                    </Suspense>
-
-                    <Suspense v-if="isFull">
-                        <EffectComposerPmndrs>
-                            <BloomPmndrs
-                                :intensity="0.45"
-                                :luminance-threshold="0.55"
-                                :luminance-smoothing="0.5"
-                                :radius="0.7"
-                                :mipmap-blur="true"
-                            />
-                        </EffectComposerPmndrs>
-                    </Suspense>
-                </TresCanvas>
+                <LazyHeroCanvas :scroll="scrollProgress" :full="isFull" />
             </ClientOnly>
         </div>
 

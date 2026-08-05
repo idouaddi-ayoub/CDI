@@ -73,20 +73,15 @@ export default defineNuxtConfig({
       { code: "fr", language: "fr-FR" },
     ],
     defaultLocale: "en",
-    // Absolute hreflang/canonical URLs — relative ones are ignored by crawlers.
     baseUrl: SITE_URL,
   },
   app: {
     head: {
       title: "CDI",
-      // No htmlAttrs.lang here on purpose: a static value would win over the
-      // per-locale one @nuxtjs/i18n sets, and ship the French page as en.
+
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-        // The hero headline is the largest element on the page and pinned
-        // sections measure their height from it, so the font must land before
-        // first paint — otherwise every pin position is computed against
-        // fallback metrics and re-measured on swap.
+
         {
           rel: "preload",
           as: "font",

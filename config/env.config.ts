@@ -2,7 +2,7 @@ export function checkEnv(env: NodeJS.ProcessEnv) {
   const required = [
     "NUXT_PUBLIC_BASE_URL",
     "NUXT_BETTER_AUTH_URL",
-    "NUXT_PUBLIC_SUPABASE_DB_URL",
+    "NUXT_PUBLIC_SUPABASE_URL",
     "NUXT_PUBLIC_S3_BUCKET",
     "NUXT_PUBLIC_S3_REGION",
     "NUXT_PUBLIC_GOOGLE_CLIENT_ID",

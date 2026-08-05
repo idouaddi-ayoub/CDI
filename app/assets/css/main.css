@@ -105,6 +105,21 @@ body {
     letter-spacing: -0.04em;
 }
 
+/* The error page's status code, which is that page's only set-piece and so has
+   to stay dominant at every width. display-xl was wrong for it: its 3rem floor
+   wins below ~370px and leaves the code barely larger than the headline under
+   it. A steeper vw slope keeps the code several times the headline on a phone,
+   and the same 12rem ceiling holds the desktop size where it already was.
+
+   This lives here rather than as utilities on the element because .display and
+   .display-xl are unlayered, so they outrank anything Tailwind emits into
+   @layer utilities — a `text-[...]` override on the element would not apply. */
+.display-code {
+    font-size: clamp(5rem, 22vw, 12rem);
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+}
+
 .eyebrow {
     font-size: 0.6875rem;
     text-transform: uppercase;
@@ -126,6 +141,34 @@ body {
 @media (prefers-reduced-motion: no-preference) {
     [data-reveal] {
         will-change: transform, opacity;
+    }
+}
+
+/* error.vue is server-rendered but animates its intro on mount, so the finished
+   text painted with the HTML and then jumped back to its start state a whole
+   script-load later to animate in. Holding that start state in CSS makes the
+   first paint the animation's first frame instead.
+
+   Gated on html.js — set by error.vue's own inline head script, since error.vue
+   renders in place of app.vue and inherits nothing from it — so a visitor
+   without JavaScript gets the finished page rather than a blank one. These are
+   deliberately not [data-reveal]: that attribute belongs to useScrollReveal
+   alone, and two systems writing one opacity is how an element gets stuck
+   invisible.
+
+   The delayed animation closes the remaining hole — JavaScript on, so html.js
+   is set, but the bundle never arrives to run the timeline. It settles on the
+   same opacity the timeline ends at, so it changes nothing when both run. */
+@media (prefers-reduced-motion: no-preference) {
+    html.js [data-error-intro] {
+        opacity: 0;
+        animation: error-intro-failsafe 1ms linear 4s forwards;
+    }
+}
+
+@keyframes error-intro-failsafe {
+    to {
+        opacity: 1;
     }
 }
 

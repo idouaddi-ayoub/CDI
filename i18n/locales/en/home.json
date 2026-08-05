@@ -57,7 +57,8 @@
     "contact": "Contact",
     "cta": "Join the club",
     "menu": "Menu",
-    "close": "Close"
+    "close": "Close",
+    "language": "Language"
   },
   "sections": {
     "hero": "Intro",

@@ -66,14 +66,18 @@ onBeforeUnmount(() => ctx?.revert());
             </button>
         </nav>
 
-        <UButton
-            :to="LINKS.join"
-            v-bind="EXTERNAL_ATTRS"
-            size="sm"
-            color="primary"
-            class="px-5"
-        >
-            {{ $t("home.nav.cta") }}
-        </UButton>
+        <div class="flex items-center gap-4">
+            <LocaleSwitch />
+
+            <UButton
+                :to="LINKS.join"
+                v-bind="EXTERNAL_ATTRS"
+                size="sm"
+                color="primary"
+                class="px-5"
+            >
+                {{ $t("home.nav.cta") }}
+            </UButton>
+        </div>
     </header>
 </template>

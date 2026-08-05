@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { visualizer } from "rollup-plugin-visualizer";
 import { checkEnv } from "./config/env.config";
+import { SITE_URL } from "./app/utils/links";
 checkEnv(process.env);
 
 export default defineNuxtConfig({
@@ -24,7 +25,10 @@ export default defineNuxtConfig({
     preference: "dark",
   },
   routeRules: {
+    // The site is one page per locale, so both get prerendered — the French
+    // route is a real URL, not a client-side swap of the English build.
     "/": { prerender: true },
+    "/fr": { prerender: true },
   },
   vite: {
     build: {
@@ -69,13 +73,14 @@ export default defineNuxtConfig({
       { code: "fr", language: "fr-FR" },
     ],
     defaultLocale: "en",
+    // Absolute hreflang/canonical URLs — relative ones are ignored by crawlers.
+    baseUrl: SITE_URL,
   },
   app: {
     head: {
       title: "CDI",
-      htmlAttrs: {
-        lang: "en",
-      },
+      // No htmlAttrs.lang here on purpose: a static value would win over the
+      // per-locale one @nuxtjs/i18n sets, and ship the French page as en.
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         // The hero headline is the largest element on the page and pinned

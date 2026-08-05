@@ -8,10 +8,11 @@ import Contact from "./home/Contact.vue";
 const revealScope = useTemplateRef<HTMLElement>("revealScope");
 useScrollReveal(revealScope);
 
+const { t } = useI18n();
+
 useSeoMeta({
-    title: "CDI ENCG Agadir — Become more with a student tech club",
-    description:
-        "A student-run digital club in Agadir. Join to build real skills, or work with us on your next digital project.",
+    title: () => t("seo.home.title"),
+    description: () => t("seo.home.description"),
 });
 </script>
 

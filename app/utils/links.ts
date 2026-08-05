@@ -10,6 +10,9 @@
  * `club` for students, `agency` for commercial work. The Paths section splits
  * on exactly this distinction.
  */
+/** Our own origin. Absolute URLs in head tags (og:url, hreflang) need it. */
+export const SITE_URL = "https://www.cdiencga.com";
+
 export const LINKS = {
   join: "https://wa.me/212708609901",
   business: "mailto:cdiencga.info@gmail.com",

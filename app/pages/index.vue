@@ -1,16 +1,27 @@
 <script setup lang="ts">
-import AboutUs from "./Home/aboutus.vue";
-import Hero from "./Home/hero.vue";
-import Events from "./Home/events.vue";
-import Contact from "./Home/contactus.vue";
+import Hero from "./home/Hero.vue";
+import Paths from "./home/Paths.vue";
+import Proof from "./home/Proof.vue";
+import Event from "./home/Event.vue";
+import Contact from "./home/Contact.vue";
 
-definePageMeta({
-  layout: "default",
+const revealScope = useTemplateRef<HTMLElement>("revealScope");
+useScrollReveal(revealScope);
+
+const { t } = useI18n();
+
+useSeoMeta({
+    title: () => t("seo.home.title"),
+    description: () => t("seo.home.description"),
 });
 </script>
+
 <template>
-  <Hero />
-  <AboutUs />
-  <Events />
-  <Contact />
+    <main ref="revealScope">
+        <Hero />
+        <Paths />
+        <Proof />
+        <Event />
+        <Contact />
+    </main>
 </template>

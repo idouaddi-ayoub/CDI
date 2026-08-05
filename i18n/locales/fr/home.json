@@ -1,0 +1,80 @@
+{
+  "hero": {
+    "line1": "Allez plus loin",
+    "line2": "avec CDI",
+    "lead": "Allez plus loin avec",
+    "full": "Allez plus loin avec CDI",
+    "sub": "Un club numérique géré par des étudiants à l’ENCG Agadir. Créez des projets concrets avec des personnes passionnées.",
+    "ctaStudent": "Rejoindre le club",
+    "ctaBusiness": "Collaborer avec nous",
+    "scroll": "Faire défiler",
+    "since": "Depuis 2018"
+  },
+  "paths": {
+    "eyebrow": "Deux façons de nous rejoindre",
+    "title": "Qui êtes-vous ?",
+    "student": {
+      "title": "Je suis étudiant(e)",
+      "body": "Apprenez à développer, concevoir et présenter vos idées. Réalisez des projets concrets, rencontrez des personnes passionnées et enrichissez votre CV avant même d'obtenir votre diplôme.",
+      "cta": "Rejoindre le club"
+    },
+    "business": {
+      "title": "Je représente une entreprise",
+      "body": "Collaborez avec nous, sponsorisez un événement ou faites appel à une équipe d'étudiants talentueux pour votre prochain projet digital : développement web, design, identité visuelle ou création de contenu.",
+      "cta": "Entrer en contact"
+    }
+  },
+  "proof": {
+    "eyebrow": "Sept ans d'expérience",
+    "stats": {
+      "founded": "Fondé",
+      "members": "Membres",
+      "events": "Événements organisés",
+      "eday": "Éditions d'E-DAY"
+    },
+    "quote": "Le CDI est l'endroit où je suis passé de ma première ligne de code à la direction d'une équipe projet. Cela a complètement changé ma vision de ce dont j'étais capable.",
+    "quoteBy": "Un membre du CDI"
+  },
+  "events": {
+    "eyebrow": "Notre événement phare",
+    "title": "E-DAY",
+    "edition": "3.0",
+    "body": "Une journée complète de conférences, d'ateliers et de networking avec des professionnels, des développeurs et des designers. Notre plus grand rendez-vous, et une occasion unique pour nos partenaires de rencontrer des centaines d'étudiants.",
+    "ctaSee": "Découvrir nos événements",
+    "ctaSponsor": "Sponsoriser la prochaine édition"
+  },
+  "finalCta": {
+    "title": "Prêt(e) à aller plus loin ?",
+    "sub": "Que vous souhaitiez nous rejoindre ou collaborer avec nous, nous ne sommes qu'à un message de distance.",
+    "ctaStudent": "Rejoindre le club",
+    "ctaBusiness": "Nous contacter"
+  },
+  "nav": {
+    "home": "Accueil",
+    "paths": "Rejoindre",
+    "proof": "À propos",
+    "event": "E-DAY",
+    "contact": "Contact",
+    "cta": "Rejoindre le club",
+    "menu": "Menu",
+    "close": "Fermer",
+    "language": "Langue"
+  },
+  "sections": {
+    "hero": "Introduction",
+    "paths": "Deux parcours",
+    "proof": "Notre parcours",
+    "event": "E-DAY",
+    "contact": "Nous contacter"
+  },
+  "loader": {
+    "label": "Chargement"
+  },
+  "footer": {
+    "club": "Le club",
+    "agency": "L'agence",
+    "contact": "Contact",
+    "location": "ENCG Agadir, Maroc",
+    "rights": "Tous droits réservés."
+  }
+}

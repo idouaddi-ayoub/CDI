@@ -1,0 +1,13 @@
+{
+  "site": {
+    "ogTitle": "Digital Club & Innovation — la tech au service des étudiants",
+    "description": "Faire grandir les étudiants par la technologie, l’innovation et la communauté. Rejoignez nos talks tech et nos ateliers pratiques.",
+    "twitterTitle": "Digital Club & Innovation — le hub tech étudiant",
+    "twitterDescription": "Talks, ateliers et une communauté vivante pour les étudiants qui innovent.",
+    "imageAlt": "Logo CDI"
+  },
+  "home": {
+    "title": "CDI ENCG Agadir — Allez plus loin avec un club tech étudiant",
+    "description": "Un club numérique géré par des étudiants à Agadir. Rejoignez-nous pour développer de vraies compétences, ou collaborez avec nous sur votre prochain projet digital."
+  }
+}

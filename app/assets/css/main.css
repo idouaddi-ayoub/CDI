@@ -1,19 +1,217 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme static {
-  --color-green-default: #1cc83b;
-  --color-green-dark: #021d0b;
+/* Space Grotesk — SIL OFL 1.1, see public/fonts/space-grotesk/OFL.txt.
+   Variable 300–700, self-hosted so the hero's WebGL wordmark and the HTML
+   headings resolve to the same outlines (public/fonts/space-grotesk-cdi.typeface.json
+   holds just the C, D and I glyphs the canvas renders). */
+@font-face {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url("/fonts/space-grotesk/SpaceGrotesk-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+        U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url("/fonts/space-grotesk/SpaceGrotesk-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+        U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+        U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+        U+A720-A7FF;
 }
 
-@theme default {
-  --text-color-primary: #ffffff;
-  --text-color-secondary: #b6ffd6;
-  --text-color-neutral: #ffffff;
-  --text-color-muted: gray;
-  --text-color-toned: blue;
-  --text-color-default: #ffffff;
-  --text-color-highlighted: #ffffff;
-  --text-color-inverted: black;
-  --ui-bg: black;
+@theme {
+    --color-brand-50: #ecfdf3;
+    --color-brand-100: #d1fae0;
+    --color-brand-200: #a7f3c6;
+    --color-brand-300: #6ee7a5;
+    --color-brand-400: #4ade80;
+    --color-brand-500: #22c55e;
+    --color-brand-600: #16a34a;
+    --color-brand-700: #15803d;
+    --color-brand-800: #166534;
+    --color-brand-900: #14532d;
+    --color-brand-950: #052e16;
+
+    --color-accent-50: #eef2ff;
+    --color-accent-100: #e0e7ff;
+    --color-accent-200: #c7d2fe;
+    --color-accent-300: #a5b4fc;
+    --color-accent-400: #818cf8;
+    --color-accent-500: #6366f1;
+    --color-accent-600: #4f46e5;
+    --color-accent-700: #4338ca;
+    --color-accent-800: #3730a3;
+    --color-accent-900: #312e81;
+    --color-accent-950: #1e1b4b;
+
+    --color-ink-700: #1c2a24;
+    --color-ink-800: #141d19;
+    --color-ink-900: #0d1311;
+    --color-ink-950: #080b0a;
+
+    --color-fg: #e8f0ec;
+    --color-fg-muted: #9fb3aa;
+
+    /* One family throughout. "Inter" used to sit on --font-sans but was never
+       loaded, so body copy silently rendered as system sans. */
+    --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+    background: var(--color-ink-950);
+    color: var(--color-fg);
+    -webkit-font-smoothing: antialiased;
+    /* The preloader locks scrolling with `overflow: hidden`, which on a classic
+       scrollbar would widen the viewport by ~15px for as long as it's up. The
+       display type is sized in vw, so the sections below would re-wrap the
+       moment the lock lifted and invalidate every pin ScrollTrigger measured
+       behind the overlay. Reserving the gutter keeps the width constant. */
+    scrollbar-gutter: stable;
+}
+body {
+    background-color: #000000;
+}
+
+@layer base {
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+.display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+/* Oversized editorial headline. clamp() rather than breakpoint jumps so the
+   type scales continuously — pinned sections measure their own height, and a
+   step change at a breakpoint would invalidate ScrollTrigger's cached pin. */
+.display-xl {
+    font-size: clamp(3rem, 13vw, 12rem);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+}
+
+/* The error page's status code, which is that page's only set-piece and so has
+   to stay dominant at every width. display-xl was wrong for it: its 3rem floor
+   wins below ~370px and leaves the code barely larger than the headline under
+   it. A steeper vw slope keeps the code several times the headline on a phone,
+   and the same 12rem ceiling holds the desktop size where it already was.
+
+   This lives here rather than as utilities on the element because .display and
+   .display-xl are unlayered, so they outrank anything Tailwind emits into
+   @layer utilities — a `text-[...]` override on the element would not apply. */
+.display-code {
+    font-size: clamp(5rem, 22vw, 12rem);
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+}
+
+.eyebrow {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--color-fg-muted);
+}
+
+/* Line-mask reveal: SplitText wraps each line in .line-mask, the inner .line
+   slides up from beneath the clip. overflow-clip beats overflow-hidden here —
+   it doesn't create a scroll container, so it can't fight Lenis. */
+.line-mask {
+    overflow: clip;
+    display: block;
+    /* Descenders would be shaved off by the clip without a little room. */
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+        will-change: transform, opacity;
+    }
+}
+
+/* error.vue is server-rendered but animates its intro on mount, so the finished
+   text painted with the HTML and then jumped back to its start state a whole
+   script-load later to animate in. Holding that start state in CSS makes the
+   first paint the animation's first frame instead.
+
+   Gated on html.js — set by error.vue's own inline head script, since error.vue
+   renders in place of app.vue and inherits nothing from it — so a visitor
+   without JavaScript gets the finished page rather than a blank one. These are
+   deliberately not [data-reveal]: that attribute belongs to useScrollReveal
+   alone, and two systems writing one opacity is how an element gets stuck
+   invisible.
+
+   The delayed animation closes the remaining hole — JavaScript on, so html.js
+   is set, but the bundle never arrives to run the timeline. It settles on the
+   same opacity the timeline ends at, so it changes nothing when both run. */
+@media (prefers-reduced-motion: no-preference) {
+    html.js [data-error-intro] {
+        opacity: 0;
+        animation: error-intro-failsafe 1ms linear 4s forwards;
+    }
+}
+
+@keyframes error-intro-failsafe {
+    to {
+        opacity: 1;
+    }
+}
+
+/* The preloader is an opaque full-screen overlay, and `/` is prerendered — so
+   it ships inside the static HTML. Gating it in CSS rather than JS means a
+   visitor whose JavaScript fails or is still parsing sees the finished page
+   underneath instead of a black rectangle. `html.js` is set by an inline head
+   script in app.vue, so this resolves before first paint with no flash. */
+.preloader {
+    display: none;
+}
+html.js .preloader {
+    display: flex;
+}
+/* Nothing to reveal when the hero doesn't animate in. */
+@media (prefers-reduced-motion: reduce) {
+    html.js .preloader {
+        display: none;
+    }
+}
+
+/* The custom cursor replaces the native one, but only where it actually
+   renders — never on touch, and never when motion is reduced. */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    html.has-custom-cursor,
+    html.has-custom-cursor * {
+        cursor: none;
+    }
+}
+
+/* Nothing moves. Kill transitions, animations, and the reveal pre-states so
+   content can never be left stuck at opacity 0 if a timeline never runs. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }

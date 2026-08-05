@@ -64,9 +64,12 @@ function buildEntrance() {
     // autoSplit re-splits when the webfont swaps in or the box is resized.
     // Without it, lines measured against fallback metrics keep their old wrap
     // points and the masks clip mid-word.
+    // Must stay in sync with the tween below: SplitText only fills `self.lines`
+    // when the type asks for lines, and a tween on the resulting empty array
+    // silently does nothing (GSAP logs "target  not found").
     SplitText.create(heading.value, {
-        type: "chars",
-        mask: "words",
+        type: "lines",
+        mask: "lines",
         autoSplit: true,
         onSplit(self) {
             // Only the first split is an entrance; later ones are reflows

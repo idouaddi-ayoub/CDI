@@ -106,9 +106,11 @@ onBeforeUnmount(() => {
         :aria-label="$t('home.loader.label')"
     >
         <div class="flex items-end justify-between">
-            <span class="display text-[18vw] leading-none sm:text-[12vw]">
-                CDI
-            </span>
+            <img
+                src="/CDI_logo.svg"
+                alt="CDI logo"
+                class="sm:h-64 h-32 w-auto"
+            />
             <span
                 class="display text-4xl tabular-nums text-brand-500 sm:text-6xl"
             >

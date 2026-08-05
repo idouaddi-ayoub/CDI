@@ -16,22 +16,10 @@ const heading = useTemplateRef<HTMLHeadingElement>("heading");
 const sub = useTemplateRef<HTMLParagraphElement>("sub");
 const cta = useTemplateRef<HTMLDivElement>("cta");
 
-/** 0 at rest, 1 when the hero has fully scrolled away. Read by <Scene>. */
 const scrollProgress = ref(0);
 
 const gl = { clearColor: "#000000", alpha: true, antialias: true };
 
-/* ---------------------------------------------------------------------- *
- * Performance watchdog
- *
- * Replaces an on-screen FPS counter and a "your animations are slow" toast
- * that shipped to production. A visitor whose device is struggling should not
- * be asked to diagnose it — take the canvas away and say nothing.
- *
- * Watches whenever the canvas is up, not just at the full tier: phones are
- * where this is most likely to fire, and since the downgrade is what unmounts
- * the canvas, guarding on `rendersCanvas` also stops it re-arming afterwards.
- * ---------------------------------------------------------------------- */
 const fps = useFps({ every: 10 });
 const FPS_FLOOR = 30;
 const SUSTAINED_MS = 2500;
@@ -50,9 +38,6 @@ watch(fps, (value) => {
     }
 });
 
-/* ---------------------------------------------------------------------- *
- * Timelines
- * ---------------------------------------------------------------------- */
 let ctx: gsap.Context | undefined;
 let entranceStarted = false;
 let firstSplitDone = false;
@@ -61,9 +46,6 @@ function buildEntrance() {
     if (entranceStarted || !heading.value) return;
     entranceStarted = true;
 
-    // autoSplit re-splits when the webfont swaps in or the box is resized.
-    // Without it, lines measured against fallback metrics keep their old wrap
-    // points and the masks clip mid-word.
     // Must stay in sync with the tween below: SplitText only fills `self.lines`
     // when the type asks for lines, and a tween on the resulting empty array
     // silently does nothing (GSAP logs "target  not found").
@@ -72,8 +54,6 @@ function buildEntrance() {
         mask: "lines",
         autoSplit: true,
         onSplit(self) {
-            // Only the first split is an entrance; later ones are reflows
-            // (font swap, resize) and must leave the type where it is.
             if (firstSplitDone) return;
             firstSplitDone = true;
             return gsap.from(self.lines, {
@@ -98,8 +78,6 @@ function buildEntrance() {
 function buildScrollTimeline() {
     if (!root.value) return;
 
-    // Pinned hand-off: the type lifts and fades while <Scene> turns the
-    // wordmark edge-on and pushes it back, so the two exits read as one move.
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: root.value,
@@ -107,12 +85,7 @@ function buildScrollTimeline() {
             end: "+=150%",
             pin: true,
             scrub: 0.6,
-            // Refreshed before every other trigger on the page. This pin is
-            // built a tick late (see onMounted), so in creation order it lands
-            // *after* the sections below it — and ScrollTrigger refreshes in
-            // creation order unless some trigger declares a priority. Without
-            // this, everything downstream measures its start with the hero's
-            // 150% pin spacer missing and fires a viewport and a half early.
+
             refreshPriority: 2,
             onUpdate: (self) => {
                 scrollProgress.value = self.progress;
@@ -126,16 +99,11 @@ function buildScrollTimeline() {
 }
 
 onMounted(async () => {
-    // The tier resolves in useMotionTier's onMounted, immediately before this
-    // one, which swaps the `v-if` headline. Without a tick, `heading` still
-    // points at the element that is about to be discarded.
     await nextTick();
 
     ctx = gsap.context(() => {
         if (!animates.value) return;
 
-        // The entrance waits behind the preloader; the scroll timeline does
-        // not, because the visitor may already have scrolled by then.
         if (isFull.value) buildScrollTimeline();
 
         if (introComplete.value) {
@@ -161,17 +129,11 @@ onBeforeUnmount(() => ctx?.revert());
     >
         <div v-if="rendersCanvas" class="absolute inset-0 -z-10">
             <ClientOnly>
-                <!-- Phones carry a 3x device ratio on a GPU that can't spend
-                     it. Capping lower there costs a little edge crispness and
-                     roughly halves the fragments the wordmark has to shade. -->
                 <TresCanvas v-bind="gl" :dpr="isFull ? [1, 1.75] : [1, 1.5]">
                     <Suspense>
                         <Scene :scroll="scrollProgress" />
                     </Suspense>
-                    <!-- Desktop only. A full-screen mipmap-blur bloom is the
-                         single most expensive thing in this scene, and on a
-                         phone it would spend the frame budget that keeps the
-                         wordmark itself on screen. -->
+
                     <Suspense v-if="isFull">
                         <EffectComposerPmndrs>
                             <BloomPmndrs
@@ -210,10 +172,6 @@ onBeforeUnmount(() => ctx?.revert());
             >
                 {{ $t("home.hero.lead") }}
             </p>
-            <!-- No canvas, so the HTML has to render the whole headline —
-                 otherwise the page reads "Become more with" and stops. This
-                 tracks the canvas, not the tier: the lead-in only makes sense
-                 when the wordmark is on screen to finish the sentence. -->
             <p
                 v-else
                 ref="heading"

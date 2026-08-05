@@ -5,7 +5,7 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const { animates } = useMotionTier();
+const { isFull, animates } = useMotionTier();
 const root = useTemplateRef<HTMLElement>("root");
 
 const stats = [
@@ -40,27 +40,54 @@ onMounted(() => {
             });
         });
 
+        // Per-character is ~150 masked spans for this quote, all tweening at
+        // once — a desktop-only budget. Below `full` the quote reveals by line,
+        // like every other heading on the page.
+        const chars = isFull.value;
+
         const quotes = (self.selector?.(".split") ?? []) as HTMLElement[];
-        splits = quotes.map((el) =>
-            SplitText.create(el, {
-                type: "chars",
-                mask: "words",
+        splits = quotes.map((el) => {
+            // autoSplit re-splits on resize and on font load, and each re-split
+            // reverts the tween this returned. So it has to hand back a fresh
+            // one every time until the reveal has actually finished — bailing
+            // early would leave a quote that never animates on any phone slow
+            // enough to swap the font in after mount. Once it has played, the
+            // text is where it belongs and a re-split needs no tween at all.
+            let played = false;
+            return SplitText.create(el, {
+                type: chars ? "chars" : "lines",
+                mask: chars ? "words" : "lines",
                 autoSplit: true,
                 onSplit(s) {
-                    return gsap.from(s.chars, {
-                        duration: 1,
-                        y: 100,
-                        autoAlpha: 0,
-                        stagger: 0.0125,
-                        scrollTrigger: {
-                            trigger: el,
-                            start: "top 85%",
-                            once: true,
-                        },
-                    });
+                    if (played) return;
+                    const onComplete = () => {
+                        played = true;
+                    };
+                    const scrollTrigger = {
+                        trigger: el,
+                        start: "top 85%",
+                        once: true,
+                    };
+                    return chars
+                        ? gsap.from(s.chars, {
+                              duration: 1,
+                              y: 100,
+                              autoAlpha: 0,
+                              stagger: 0.0125,
+                              scrollTrigger,
+                              onComplete,
+                          })
+                        : gsap.from(s.lines, {
+                              duration: 1.1,
+                              yPercent: 110,
+                              stagger: 0.1,
+                              ease: "power4.out",
+                              scrollTrigger,
+                              onComplete,
+                          });
                 },
-            }),
-        );
+            });
+        });
     }, root.value);
 });
 
@@ -98,7 +125,7 @@ onBeforeUnmount(() => {
                 </div>
             </div>
 
-            <blockquote class="mt-24 max-w-4xl split" data-reveal>
+            <blockquote class="mt-24 max-w-4xl split">
                 <p class="display text-2xl sm:text-4xl lg:text-5xl">
                     “{{ $t("home.proof.quote") }}”
                 </p>

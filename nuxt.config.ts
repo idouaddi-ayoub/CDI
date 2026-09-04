@@ -85,8 +85,8 @@ export default defineNuxtConfig({
         {
           rel: "preload",
           as: "font",
-          type: "font/woff2",
-          href: "/fonts/DepartureMono-Regular.woff2",
+          type: "font/otf",
+          href: "/fonts/Fontspring-DEMO-anguitasans-blackit.otf",
           crossorigin: "anonymous",
         },
       ],

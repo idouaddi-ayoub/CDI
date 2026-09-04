@@ -33,7 +33,8 @@
       "eday": "E-DAY editions"
     },
     "quote": "CDI is where I went from writing my first line of code to leading a project team. It changed what I thought I was capable of.",
-    "quoteBy": "A CDI member"
+    "quoteBy": "A CDI member",
+    "title": "Numbers we can stand behind."
   },
   "events": {
     "eyebrow": "Our flagship event",
@@ -41,18 +42,33 @@
     "edition": "3.0",
     "body": "A full day of talks, workshops, and networking with industry professionals, developers, and designers. Our biggest stage — and a chance for partners to reach hundreds of students.",
     "ctaSee": "See our events",
-    "ctaSponsor": "Sponsor the next one"
+    "ctaSponsor": "Sponsor the next one",
+    "highlights": {
+      "talks": {
+        "title": "Talks",
+        "body": "Founders, engineers and designers on what the work actually looks like."
+      },
+      "workshops": {
+        "title": "Workshops",
+        "body": "Hands-on sessions where you leave having built something."
+      },
+      "network": {
+        "title": "Networking",
+        "body": "Hundreds of students in one room with the people who hire them."
+      }
+    }
   },
   "finalCta": {
     "title": "Ready to become more?",
     "sub": "Whether you want to join or work with us, we're one message away.",
     "ctaStudent": "Join the club",
-    "ctaBusiness": "Get in touch"
+    "ctaBusiness": "Get in touch",
+    "eyebrow": "Last stop"
   },
   "nav": {
     "home": "Home",
-    "paths": "Join",
-    "proof": "About",
+    "join": "Join",
+    "about": "About",
     "event": "E-DAY",
     "contact": "Contact",
     "cta": "Join the club",

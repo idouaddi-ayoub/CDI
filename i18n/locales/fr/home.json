@@ -33,7 +33,8 @@
       "eday": "Éditions d'E-DAY"
     },
     "quote": "Le CDI est l'endroit où je suis passé de ma première ligne de code à la direction d'une équipe projet. Cela a complètement changé ma vision de ce dont j'étais capable.",
-    "quoteBy": "Un membre du CDI"
+    "quoteBy": "Un membre du CDI",
+    "title": "Des chiffres que l'on assume."
   },
   "events": {
     "eyebrow": "Notre événement phare",
@@ -41,18 +42,33 @@
     "edition": "3.0",
     "body": "Une journée complète de conférences, d'ateliers et de networking avec des professionnels, des développeurs et des designers. Notre plus grand rendez-vous, et une occasion unique pour nos partenaires de rencontrer des centaines d'étudiants.",
     "ctaSee": "Découvrir nos événements",
-    "ctaSponsor": "Sponsoriser la prochaine édition"
+    "ctaSponsor": "Sponsoriser la prochaine édition",
+    "highlights": {
+      "talks": {
+        "title": "Conférences",
+        "body": "Fondateurs, développeurs et designers racontent le métier tel qu'il est."
+      },
+      "workshops": {
+        "title": "Ateliers",
+        "body": "Des sessions pratiques dont on repart avec un projet en main."
+      },
+      "network": {
+        "title": "Networking",
+        "body": "Des centaines d'étudiants dans la même salle que ceux qui recrutent."
+      }
+    }
   },
   "finalCta": {
     "title": "Prêt(e) à aller plus loin ?",
     "sub": "Que vous souhaitiez nous rejoindre ou collaborer avec nous, nous ne sommes qu'à un message de distance.",
     "ctaStudent": "Rejoindre le club",
-    "ctaBusiness": "Nous contacter"
+    "ctaBusiness": "Nous contacter",
+    "eyebrow": "Dernière étape"
   },
   "nav": {
     "home": "Accueil",
-    "paths": "Rejoindre",
-    "proof": "À propos",
+    "join": "Rejoindre",
+    "about": "À propos",
     "event": "E-DAY",
     "contact": "Contact",
     "cta": "Rejoindre le club",

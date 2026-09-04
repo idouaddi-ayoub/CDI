@@ -1,13 +1,27 @@
 <script setup lang="ts">
-const { locale } = useI18n();
+const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 
-// on = fr, off = en
-const isFr = computed(() => locale.value === "fr");
+const flags: Record<string, string> = {
+    en: "i-circle-flags-gb",
+    fr: "i-circle-flags-fr",
+};
 
-function onToggle(v: boolean) {
-    return navigateTo(switchLocalePath(v ? "fr" : "en"));
-}
+const items = computed(() =>
+    locales.value.map((l) => {
+        const code = typeof l === "string" ? l : l.code;
+        return {
+            label: code.toUpperCase(),
+            value: code,
+            icon: flags[code],
+        };
+    }),
+);
+
+const selected = computed({
+    get: () => locale.value,
+    set: (code: string) => navigateTo(switchLocalePath(code as any)),
+});
 </script>
 
 <template>
@@ -15,12 +29,21 @@ function onToggle(v: boolean) {
         :aria-label="$t('home.nav.language')"
         class="flex items-center gap-2 text-xs uppercase tracking-wide"
     >
-        <span :class="isFr ? 'text-fg-muted' : 'text-fg'">en</span>
-        <USwitch
-            :model-value="isFr"
+        <USelectMenu
+            v-model="selected"
+            :items="items"
+            value-key="value"
+            :search-input="false"
             :aria-label="$t('home.nav.language')"
-            @update:model-value="onToggle"
-        />
-        <span :class="isFr ? 'text-fg' : 'text-fg-muted'">fr</span>
+            class="w-24"
+        >
+            <template #leading>
+                <UIcon
+                    v-if="flags[selected]"
+                    :name="flags[selected]"
+                    class="size-4"
+                />
+            </template>
+        </USelectMenu>
     </nav>
 </template>

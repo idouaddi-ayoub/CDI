@@ -6,28 +6,19 @@ import { LINKS, EXTERNAL_ATTRS } from "@/utils/links";
 
 gsap.registerPlugin(SplitText);
 
-// Nuxt renders this component *instead of* app.vue, so nothing above it exists
-// here: no <UApp>, no layout, no <html lang>. Each of those is re-established
-// below rather than inherited.
 const props = defineProps<{ error: NuxtError }>();
 
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
-const { animates } = useMotionTier();
 
-const status = computed(() => props.error?.statusCode ?? 500);
+const status = computed(() => props.error?.status ?? 500);
 
-// Two voices only. `error.statusMessage` is deliberately never rendered — on a
-// 500 it carries server internals, and on a 404 it says nothing a visitor needs.
 const variant = computed(() => (status.value === 404 ? "notFound" : "generic"));
 
 useHead(() => ({
     htmlAttrs: { lang: locale.value },
 }));
 
-// app.vue sets this too, but error.vue renders in its place and inherits
-// nothing from it. It is what lets main.css hold the intro's start state for
-// scripted visitors only — inline and in <head>, so it lands before first paint.
 useHead({
     script: [
         {
@@ -39,8 +30,6 @@ useHead({
 
 useSeoMeta({
     title: () => `${t(`error.${variant.value}.title`)} — CDI`,
-    // Follow the links out, but keep the page itself out of the index: a 404
-    // that ranks is worse than no result at all.
     robots: "noindex, follow",
 });
 
@@ -55,23 +44,14 @@ let ctx: gsap.Context | undefined;
 onMounted(async () => {
     await nextTick();
 
-    // useMotionTier resolves in its own onMounted, which is registered during
-    // setup and so has already run by the time this one does.
-    if (!animates.value) return;
-
     ctx = gsap.context(() => {
-        // These elements are already hidden by CSS — see [data-error-intro] in
-        // main.css — which rules out a bare `from`: it reads the element's
-        // current value as its destination, so every one of them would animate
-        // from transparent to transparent. Both ends are stated explicitly.
         SplitText.create(codeEl.value, {
             type: "chars",
             mask: "chars",
             onSplit: (self) =>
                 gsap
                     .timeline()
-                    // Safe to unhide before the digits move: each sits in its
-                    // own mask, and yPercent 115 parks it below the clip.
+
                     .set(codeEl.value, { opacity: 1 })
                     .from(self.chars, {
                         yPercent: 115,
@@ -98,8 +78,6 @@ onMounted(async () => {
 
 onBeforeUnmount(() => ctx?.revert());
 
-// Clearing the error is what tears down this component and hands the router
-// back; a plain <NuxtLink> would navigate underneath a still-mounted error.
 function goHome() {
     return clearError({ redirect: localePath("/") });
 }
@@ -107,12 +85,7 @@ function goHome() {
 
 <template>
     <UApp>
-        <main
-            ref="root"
-            class="relative flex min-h-svh flex-col overflow-hidden"
-        >
-            <!-- The hero's no-canvas backdrop. An error page is the last place
-                 to spin up WebGL, so this is the whole background. -->
+        <main ref="root" class="relative flex min-h-svh flex-col">
             <div
                 class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_70%_45%,rgba(34,197,94,0.16),transparent_70%)]"
                 aria-hidden="true"
@@ -125,13 +98,13 @@ function goHome() {
                     <img src="/CDI_logo.svg" alt="CDI" class="w-12" />
                 </NuxtLink>
 
-                <p class="eyebrow">{{ $t("error.eyebrow", { code: status }) }}</p>
+                <p class="eyebrow">
+                    {{ $t("error.eyebrow", { code: status }) }}
+                </p>
             </header>
 
             <div class="flex flex-1 items-center px-6 py-16 sm:px-10">
                 <div class="mx-auto w-full max-w-7xl">
-                    <!-- The status code is the display type here, and it is
-                         decoration: the <h1> below carries the actual message. -->
                     <p
                         ref="codeEl"
                         data-error-intro

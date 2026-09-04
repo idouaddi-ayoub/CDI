@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@nuxt/image", "@nuxtjs/i18n", "@tresjs/nuxt"],
   icon: {
     serverBundle: {
-      collections: ["lucide", "simple-icons"],
+      collections: ["lucide", "simple-icons", "circle-flags"],
     },
   },
   extends: ["./layers/auth"],
@@ -86,7 +86,7 @@ export default defineNuxtConfig({
           rel: "preload",
           as: "font",
           type: "font/woff2",
-          href: "/fonts/space-grotesk/SpaceGrotesk-latin.woff2",
+          href: "/fonts/DepartureMono-Regular.woff2",
           crossorigin: "anonymous",
         },
       ],

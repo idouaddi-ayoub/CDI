@@ -15,7 +15,7 @@
     "title": "Qui êtes-vous ?",
     "student": {
       "title": "Je suis étudiant(e)",
-      "body": "Apprenez à développer, concevoir et présenter vos idées. Réalisez des projets concrets, rencontrez des personnes passionnées et enrichissez votre CV avant même d'obtenir votre diplôme.",
+      "body": "Rejoignez une communauté qui développe, concevoir et présenter vos idées. Réalisez des projets concrets, rencontrez des personnes passionnées et enrichissez votre CV avant même d'obtenir votre diplôme.",
       "cta": "Rejoindre le club"
     },
     "business": {
@@ -24,37 +24,30 @@
       "cta": "Entrer en contact"
     }
   },
-  "proof": {
+  "about": {
     "eyebrow": "Sept ans d'expérience",
-    "stats": {
-      "founded": "Fondé",
-      "members": "Membres",
-      "events": "Événements organisés",
-      "eday": "Éditions d'E-DAY"
-    },
-    "quote": "Le CDI est l'endroit où je suis passé de ma première ligne de code à la direction d'une équipe projet. Cela a complètement changé ma vision de ce dont j'étais capable.",
-    "quoteBy": "Un membre du CDI",
+    "body": "Depuis 2018, CDI est passé d'une poignée d'étudiants à l'une des communautés tech les plus actives du campus. Pas de cours magistraux, pas de barrières à l'entrée — juste des nuits blanches, de vrais projets, et des gens qui s'entraident, un projet à la fois.",
     "title": "Des chiffres que l'on assume."
   },
   "events": {
     "eyebrow": "Notre événement phare",
     "title": "E-DAY",
-    "edition": "3.0",
-    "body": "Une journée complète de conférences, d'ateliers et de networking avec des professionnels, des développeurs et des designers. Notre plus grand rendez-vous, et une occasion unique pour nos partenaires de rencontrer des centaines d'étudiants.",
+    "edition": "X.0",
+    "body": "Une journée complète de conférences et de networking avec des professionnels. Notre plus grand rendez-vous, et une occasion unique pour nos partenaires de rencontrer des centaines d'étudiants.",
     "ctaSee": "Découvrir nos événements",
     "ctaSponsor": "Sponsoriser la prochaine édition",
     "highlights": {
-      "talks": {
-        "title": "Conférences",
-        "body": "Fondateurs, développeurs et designers racontent le métier tel qu'il est."
+      "speaker": {
+        "title": "Speaker Series",
+        "body": "Des fondateurs qui parlent de ce à quoi ressemble vraiment le travail."
       },
-      "workshops": {
-        "title": "Ateliers",
-        "body": "Des sessions pratiques dont on repart avec un projet en main."
+      "talks": {
+        "title": "Tech Talks",
+        "body": "Des idées venant de gens qui ont vraiment fait le truc."
       },
       "network": {
         "title": "Networking",
-        "body": "Des centaines d'étudiants dans la même salle que ceux qui recrutent."
+        "body": "Des centaines d'étudiants dans la même salle que ceux qui les embauchent."
       }
     }
   },

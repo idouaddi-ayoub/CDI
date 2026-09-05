@@ -15,7 +15,7 @@
     "title": "Which one are you?",
     "student": {
       "title": "I'm a student",
-      "body": "Learn to code, design, and pitch. Build real projects, meet people who make things, and put something on your CV before you graduate.",
+      "body": "Join a community that codes, designs, and pitch. Build real projects, meet people who make things, and put something on your CV before you graduate.",
       "cta": "Join the club"
     },
     "business": {
@@ -24,33 +24,26 @@
       "cta": "Start a conversation"
     }
   },
-  "proof": {
-    "eyebrow": "Seven years in",
-    "stats": {
-      "founded": "Founded",
-      "members": "Members",
-      "events": "Events run",
-      "eday": "E-DAY editions"
-    },
-    "quote": "CDI is where I went from writing my first line of code to leading a project team. It changed what I thought I was capable of.",
-    "quoteBy": "A CDI member",
-    "title": "Numbers we can stand behind."
+  "about": {
+    "eyebrow": "WHO WE ARE",
+    "body": "Since 2018, CDI has grown from a handful of students into one of the most active tech communities on campus. No lectures, no gatekeeping — just late nights, real projects, and people helping each other, one project at a time.",
+    "title": "A community built by geeks, for geeks."
   },
   "events": {
     "eyebrow": "Our flagship event",
     "title": "E-DAY",
-    "edition": "3.0",
-    "body": "A full day of talks, workshops, and networking with industry professionals, developers, and designers. Our biggest stage — and a chance for partners to reach hundreds of students.",
+    "edition": "X.0",
+    "body": "A full day of talks and networking with industry professionals. Our biggest stage — and a chance for partners to reach hundreds of students.",
     "ctaSee": "See our events",
     "ctaSponsor": "Sponsor the next one",
     "highlights": {
-      "talks": {
-        "title": "Talks",
-        "body": "Founders, engineers and designers on what the work actually looks like."
+      "speaker": {
+        "title": "Speaker Series",
+        "body": "Founders on what the work actually looks like."
       },
-      "workshops": {
-        "title": "Workshops",
-        "body": "Hands-on sessions where you leave having built something."
+      "talks": {
+        "title": "Tech Talks",
+        "body": "'Ideas from people who've actually done the thing.' — leans into credibility of the speaker over the format."
       },
       "network": {
         "title": "Networking",

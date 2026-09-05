@@ -13,6 +13,10 @@ const { rendersCanvas, isFull } = useMotionTier();
         <Navigation />
 
         <div
+            aria-hidden="true"
+            class="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(ellipse_70%_55%_at_60%_40%,rgba(34,197,94,0.14),transparent_50%)]"
+        />
+        <div
             v-if="rendersCanvas"
             class="pointer-events-none fixed inset-0 -z-10"
         >
@@ -25,12 +29,6 @@ const { rendersCanvas, isFull } = useMotionTier();
                 <Scene />
             </TresCanvas>
         </div>
-
-        <div
-            v-else
-            aria-hidden="true"
-            class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_70%_55%_at_60%_40%,rgba(34,197,94,0.14),transparent_70%)]"
-        />
 
         <main><slot /></main>
     </div>

@@ -97,7 +97,7 @@ body {
 
 .scrim-b {
     background: linear-gradient(
-        to top,
+        to bottom,
         var(--color-ink-950) 0%,
         color-mix(in oklab, var(--color-ink-950) 72%, transparent) 45%,
         transparent 100%

@@ -25,7 +25,7 @@ export const LINKS = {
 export type SocialLink = { icon: string; href: string; label: string };
 
 export const NAV_ITEMS = [
-  { key: "about", id: "proof" },
+  { key: "about", id: "about" },
   { key: "event", id: "event" },
   { key: "join", id: "paths" },
   { key: "contact", id: "contact" },

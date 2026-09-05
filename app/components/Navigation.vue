@@ -145,6 +145,18 @@ function closeOnDesktop(e: MediaQueryListEvent | MediaQueryList) {
     if (e.matches) setMenu(false);
 }
 
+const localePath = useLocalePath();
+
+function onLogoClick(e: MouseEvent, navigate: (e: MouseEvent) => void) {
+    const isHome = route.path === "/" || route.path === "/fr";
+    if (isHome) {
+        e.preventDefault();
+        jumpTo("hero");
+    } else {
+        navigate(e);
+    }
+}
+
 onMounted(async () => {
     await nextTick();
 
@@ -202,12 +214,15 @@ onBeforeUnmount(() => {
                     : 'border-b border-transparent'
             "
         >
-            <NuxtLink
-                to="/"
-                class="display text-xl tracking-tight"
-                aria-label="CDI — home"
-            >
-                <img src="/CDI_logo.svg" alt="CDI" class="w-12" />
+            <NuxtLink :to="localePath('/')" custom v-slot="{ href, navigate }">
+                <a
+                    :href="href"
+                    class="display text-xl tracking-tight"
+                    aria-label="CDI — home"
+                    @click="onLogoClick($event, navigate)"
+                >
+                    <img src="/CDI_logo.svg" alt="CDI" class="w-12" />
+                </a>
             </NuxtLink>
 
             <nav class="hidden items-center gap-8 md:flex">

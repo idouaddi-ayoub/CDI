@@ -67,19 +67,18 @@ body {
 .display {
     font-family: var(--font-display);
     font-weight: 700;
-    line-height: 0.95;
     letter-spacing: 0;
     text-wrap: balance;
 }
 
 .display-xl {
     font-size: clamp(2.5rem, 9vw, 8rem);
-    line-height: 0.9;
+    line-height: 1;
 }
 
 .display-code {
     font-size: clamp(5rem, 22vw, 12rem);
-    line-height: 0.82;
+    line-height: 1;
 }
 
 .eyebrow {

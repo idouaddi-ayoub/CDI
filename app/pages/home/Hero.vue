@@ -10,6 +10,9 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const { rendersCanvas, downgrade } = useMotionTier();
 const introComplete = useIntroComplete();
 
+const ctaWrap = useTemplateRef<HTMLElement>("ctaWrap");
+let idle: gsap.core.Tween | undefined;
+let orbit: gsap.core.Tween | undefined;
 const root = useTemplateRef<HTMLElement>("root");
 const heading = useTemplateRef<HTMLParagraphElement>("heading");
 const sub = useTemplateRef<HTMLParagraphElement>("sub");
@@ -54,6 +57,50 @@ function buildEntrance() {
         },
     });
 }
+
+onMounted(() => {
+    if (!ctaWrap.value) return;
+
+    idle = gsap.to(ctaWrap.value, {
+        "--glow": 1,
+        duration: 1.6,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+    });
+
+    orbit = gsap.to(ctaWrap.value, {
+        "--angle": 360,
+        duration: 3,
+        repeat: -1,
+        ease: "none",
+    });
+});
+
+function onEnter() {
+    idle?.pause();
+    gsap.to(ctaWrap.value, {
+        "--glow": 1.6,
+        duration: 0.3,
+        ease: "power2.out",
+    });
+    orbit?.timeScale(2.2);
+}
+
+function onLeave() {
+    gsap.to(ctaWrap.value, {
+        "--glow": 0.4,
+        duration: 0.4,
+        ease: "power2.in",
+        onComplete: () => idle?.resume(),
+    });
+    orbit?.timeScale(1);
+}
+
+onUnmounted(() => {
+    idle?.kill();
+    orbit?.kill();
+});
 
 onMounted(async () => {
     await nextTick();
@@ -114,15 +161,19 @@ onBeforeUnmount(() => ctx?.revert());
             </p>
 
             <div ref="cta" class="mt-10 flex flex-wrap items-center gap-4">
-                <UButton
-                    :to="LINKS.join"
-                    v-bind="EXTERNAL_ATTRS"
-                    size="xl"
-                    color="primary"
-                    class="px-8"
-                >
-                    {{ $t("home.hero.ctaStudent") }}
-                </UButton>
+                <div ref="ctaWrap" class="neon-wrap inline-block">
+                    <UButton
+                        :to="LINKS.join"
+                        v-bind="EXTERNAL_ATTRS"
+                        size="xl"
+                        color="primary"
+                        class="neon-cta px-8"
+                        @mouseenter="onEnter"
+                        @mouseleave="onLeave"
+                    >
+                        {{ $t("home.hero.ctaStudent") }}
+                    </UButton>
+                </div>
                 <UButton
                     :to="LINKS.business"
                     size="xl"
@@ -135,3 +186,43 @@ onBeforeUnmount(() => ctx?.revert());
         </div>
     </section>
 </template>
+<style scoped>
+.neon-wrap {
+    --glow: 0.4;
+    --angle: 0;
+    --neon-color: #3fe822;
+    position: relative;
+    border-radius: 9999px;
+    padding: 3px;
+}
+
+.neon-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+        from calc(var(--angle) * 1deg),
+        transparent 0deg,
+        var(--neon-color) 25deg,
+        transparent 70deg,
+        transparent 360deg
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    filter: blur(1px);
+    pointer-events: none;
+}
+
+:deep(.neon-cta) {
+    box-shadow:
+        0 0 calc(8px * var(--glow)) var(--neon-color),
+        0 0 calc(24px * var(--glow)) var(--neon-color),
+        0 0 calc(48px * var(--glow))
+            color-mix(in srgb, var(--neon-color) 60%, transparent);
+}
+</style>

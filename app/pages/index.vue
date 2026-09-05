@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Hero from "./home/Hero.vue";
-import Proof from "./home/Proof.vue";
+import About from "./home/About.vue";
 import Event from "./home/Event.vue";
 import Paths from "./home/Paths.vue";
 import Contact from "./home/Contact.vue";
 
 const { t } = useI18n();
 
-const SECTIONS = ["hero", "proof", "event", "paths", "contact"] as const;
+const SECTIONS = ["hero", "about", "event", "paths", "contact"] as const;
 
 useScenePose([...SECTIONS]);
 
@@ -20,7 +20,7 @@ useSeoMeta({
 <template>
     <div>
         <Hero />
-        <Proof />
+        <About />
         <Event />
         <Paths />
         <Contact />

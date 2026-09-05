@@ -145,7 +145,7 @@ onBeforeUnmount(() => ctx?.revert());
 
         <div
             aria-hidden="true"
-            class="scrim-b pointer-events-none absolute inset-x-0 bottom-0 top-1/4 -z-10"
+            class="scrim-b pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-full"
         />
 
         <div class="relative mx-auto w-full max-w-7xl">

@@ -8,7 +8,7 @@ const panel = useTemplateRef<HTMLElement>("panel");
 const title = useTemplateRef<HTMLHeadingElement>("title");
 const edition = useTemplateRef<HTMLElement>("edition");
 
-const highlights = ["talks", "workshops", "network"] as const;
+const highlights = ["speaker", "talks", "network"] as const;
 
 let ctx: gsap.Context | undefined;
 let split: SplitText | undefined;

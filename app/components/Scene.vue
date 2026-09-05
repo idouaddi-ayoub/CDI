@@ -9,14 +9,13 @@ import {
 } from "three";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { Environment } from "@tresjs/cientos";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { Camera, Group, PerspectiveCamera } from "three";
 
 const isPerspective = (c: Camera | undefined): c is PerspectiveCamera =>
     (c as PerspectiveCamera | undefined)?.isPerspectiveCamera === true;
 
-const { camera: activeCamera } = useTres();
+const { camera: activeCamera, renderer } = useTres();
 const { camera, root, letters, material } = useSceneRefs();
 
 const rootEl = shallowRef();
@@ -123,6 +122,36 @@ onMounted(() => {
     if (isPerspective(activeCamera.value)) camera.value = activeCamera.value;
     frameCamera();
     window.addEventListener("resize", frameCamera, { passive: true });
+});
+const { downgrade } = useMotionTier();
+
+onMounted(() => {
+    const canvas = renderer.domElement;
+    if (!canvas) {
+        console.error(
+            "Could not resolve canvas from useTres().renderer — check its shape:",
+            renderer,
+            renderer.debug,
+        );
+        return;
+    }
+
+    let restoreTimeout: ReturnType<typeof setTimeout> | undefined;
+
+    const onLost = (e: Event) => {
+        e.preventDefault();
+        restoreTimeout = setTimeout(() => downgrade(), 3000);
+    };
+    const onRestored = () => clearTimeout(restoreTimeout);
+
+    canvas.addEventListener("webglcontextlost", onLost);
+    canvas.addEventListener("webglcontextrestored", onRestored);
+
+    onUnmounted(() => {
+        clearTimeout(restoreTimeout);
+        canvas.removeEventListener("webglcontextlost", onLost);
+        canvas.removeEventListener("webglcontextrestored", onRestored);
+    });
 });
 
 onUnmounted(() => {

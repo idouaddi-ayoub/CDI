@@ -8,7 +8,11 @@
     "ctaStudent": "Join the club",
     "ctaBusiness": "Work with us",
     "scroll": "Scroll",
-    "since": "Est. 2018"
+    "since": "Est. 2018",
+    "joinModal": {
+      "body": "Recruitment day is coming soon — stay tuned and follow us so you don't miss it.",
+      "cta": "Follow our socials"
+    }
   },
   "paths": {
     "eyebrow": "Two ways in",

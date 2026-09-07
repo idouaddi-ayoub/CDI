@@ -8,7 +8,11 @@
     "ctaStudent": "Rejoindre le club",
     "ctaBusiness": "Collaborer avec nous",
     "scroll": "Faire défiler",
-    "since": "Depuis 2018"
+    "since": "Depuis 2018",
+    "joinModal": {
+      "body": "Le jour du recrutement arrive bientôt — restez à l'écoute pour ne pas le manquer.",
+      "cta": "Suivre nos réseaux"
+    }
   },
   "paths": {
     "eyebrow": "Deux façons de nous rejoindre",

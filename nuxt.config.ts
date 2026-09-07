@@ -13,12 +13,19 @@ export default defineNuxtConfig({
     },
   },
   typescript: { typeCheck: true },
-  modules: ["@nuxt/ui", "@nuxt/image", "@nuxtjs/i18n", "@tresjs/nuxt", "@nuxt/hints"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/image",
+    "@nuxtjs/i18n",
+    "@tresjs/nuxt",
+    "@nuxt/hints",
+  ],
   icon: {
     serverBundle: {
       collections: ["lucide", "simple-icons", "circle-flags"],
     },
   },
+
   extends: ["./layers/auth"],
   css: ["~/assets/css/main.css", "lenis/dist/lenis.css"],
   colorMode: {

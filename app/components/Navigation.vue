@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "~/utils/gsap";
 import { LINKS, CLUB_SOCIALS, EXTERNAL_ATTRS, NAV_ITEMS } from "@/utils/links";
+import { useJumpTo } from "~/composables/useJump";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const { jumpTo } = useJumpTo();
 const { $lenis } = useNuxtApp();
 const route = useRoute();
 const DESKTOP = "(min-width: 768px)";
@@ -17,17 +18,6 @@ const panel = useTemplateRef<HTMLElement>("panel");
 const sheet = useTemplateRef<HTMLElement>("sheet");
 const barTop = useTemplateRef<HTMLElement>("barTop");
 const barBottom = useTemplateRef<HTMLElement>("barBottom");
-
-function jumpTo(id: string) {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    const pin = ScrollTrigger.getAll().find((t) => t.pin && t.trigger === el);
-
-    if ($lenis) $lenis.scrollTo(pin ? pin.end : el, { offset: 0 });
-    else if (pin) window.scrollTo(0, pin.end);
-    else el.scrollIntoView({ behavior: "auto", block: "start" });
-}
 
 let menuTl: gsap.core.Timeline | undefined;
 
@@ -251,16 +241,6 @@ onBeforeUnmount(() => {
 
             <div class="hidden items-center gap-4 md:flex">
                 <LocaleSwitch />
-
-                <UButton
-                    :to="LINKS.join"
-                    v-bind="EXTERNAL_ATTRS"
-                    size="sm"
-                    color="primary"
-                    class="px-5"
-                >
-                    {{ $t("home.nav.cta") }}
-                </UButton>
             </div>
 
             <button

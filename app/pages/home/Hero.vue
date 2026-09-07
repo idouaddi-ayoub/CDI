@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+import { gsap, SplitText } from "~/utils/gsap";
 import { useFps } from "@vueuse/core";
-import { LINKS, EXTERNAL_ATTRS } from "@/utils/links";
+import { LINKS } from "@/utils/links";
+import { useJumpTo } from "~/composables/useJump";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
-
+const { jumpTo } = useJumpTo();
 const { rendersCanvas, downgrade } = useMotionTier();
 const introComplete = useIntroComplete();
+const isJoinModalOpen = ref(false);
+const active = ref<string>("hero");
 
 const ctaWrap = useTemplateRef<HTMLElement>("ctaWrap");
 let idle: gsap.core.Tween | undefined;
@@ -97,6 +97,11 @@ function onLeave() {
     orbit?.timeScale(1);
 }
 
+function jumpToPath() {
+    isJoinModalOpen.value = false;
+    jumpTo(NAV_ITEMS[2].id);
+}
+
 onUnmounted(() => {
     idle?.kill();
     orbit?.kill();
@@ -161,19 +166,41 @@ onBeforeUnmount(() => ctx?.revert());
             </p>
 
             <div ref="cta" class="mt-10 flex flex-wrap items-center gap-4">
-                <div ref="ctaWrap" class="neon-wrap inline-block">
-                    <UButton
-                        :to="LINKS.join"
-                        v-bind="EXTERNAL_ATTRS"
-                        size="xl"
-                        color="primary"
-                        class="neon-cta px-8"
-                        @mouseenter="onEnter"
-                        @mouseleave="onLeave"
-                    >
-                        {{ $t("home.hero.ctaStudent") }}
-                    </UButton>
-                </div>
+                <UModal
+                    v-model:open="isJoinModalOpen"
+                    :title="$t('home.hero.ctaStudent')"
+                    :ui="{
+                        overlay: 'bg-black/80 backdrop-blur-sm',
+                        content:
+                            'bg-neutral-950 border border-primary-500/30 rounded-2xl shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)]',
+                        header: 'border-b border-white/10',
+                        title: 'text-white font-semibold',
+                        body: 'text-fg-muted',
+                        close: 'text-white/60 hover:text-white',
+                    }"
+                >
+                    <div ref="ctaWrap" class="neon-wrap inline-block">
+                        <UButton
+                            size="xl"
+                            color="primary"
+                            class="neon-cta px-8"
+                            @mouseenter="onEnter"
+                            @mouseleave="onLeave"
+                        >
+                            {{ $t("home.hero.ctaStudent") }}
+                        </UButton>
+                    </div>
+
+                    <template #body>
+                        <p class="text-sm text-gray-400 mb-4">
+                            {{ $t("home.hero.joinModal.body") }}
+                        </p>
+                        <UButton color="primary" block @click="jumpToPath">
+                            {{ $t(`home.nav.${NAV_ITEMS[2].key}`) }}
+                        </UButton>
+                    </template>
+                </UModal>
+
                 <UButton
                     :to="LINKS.business"
                     size="xl"

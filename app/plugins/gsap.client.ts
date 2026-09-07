@@ -1,7 +1,10 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "~/utils/gsap";
 
 export default defineNuxtPlugin(() => {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.config({ nullTargetWarn: false });
+  return {
+    provide: {
+      gsap,
+      ScrollTrigger,
+    },
+  };
 });

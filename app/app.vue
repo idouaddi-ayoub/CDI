@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Link } from "@unhead/vue";
 import { SITE_URL } from "@/utils/links";
-// import { Analytics } from "@vercel/analytics/vue";
+import { Analytics } from "@vercel/analytics/vue";
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
 
@@ -41,7 +41,7 @@ useHead({
 <template>
     <UApp>
         <NuxtRouteAnnouncer />
-        <!-- <Analytics /> -->
+        <Analytics />
         <NuxtLayout>
             <NuxtPage />
         </NuxtLayout>

@@ -21,6 +21,7 @@
     "db:status": "pnpx supabase status"
   },
   "dependencies": {
+    "@nuxt/hints": "1.1.4",
     "@nuxt/image": "^2.1.0",
     "@nuxt/ui": "^4.11.0",
     "@nuxtjs/i18n": "10.3.0",

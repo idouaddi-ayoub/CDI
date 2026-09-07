@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     },
   },
   typescript: { typeCheck: true },
-  modules: ["@nuxt/ui", "@nuxt/image", "@nuxtjs/i18n", "@tresjs/nuxt"],
+  modules: ["@nuxt/ui", "@nuxt/image", "@nuxtjs/i18n", "@tresjs/nuxt", "@nuxt/hints"],
   icon: {
     serverBundle: {
       collections: ["lucide", "simple-icons", "circle-flags"],
@@ -25,8 +25,6 @@ export default defineNuxtConfig({
     preference: "dark",
   },
   routeRules: {
-    // The site is one page per locale, so both get prerendered — the French
-    // route is a real URL, not a client-side swap of the English build.
     "/": { prerender: true },
     "/fr": { prerender: true },
   },

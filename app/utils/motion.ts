@@ -1,4 +1,4 @@
-import { gsap, ScrollTrigger, SplitText } from "~/utils/gsap";
+import { gsap, SplitText } from "~/utils/gsap";
 
 export const ENTER = "top 82%";
 

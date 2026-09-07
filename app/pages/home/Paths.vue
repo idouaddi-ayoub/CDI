@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import type { SplitText } from "gsap/SplitText";
+import { gsap, SplitText } from "~/utils/gsap";
+
 import {
     LINKS,
     CLUB_SOCIALS,
@@ -135,13 +135,6 @@ onBeforeUnmount(() => {
                     @pointerenter="active = panel.id"
                     @focusin="active = panel.id"
                 >
-                    <a
-                        :href="panel.href"
-                        v-bind="panel.external ? EXTERNAL_ATTRS : {}"
-                        class="absolute inset-0 z-0 rounded-2xl"
-                        :aria-label="$t(`home.paths.${panel.id}.title`)"
-                    />
-
                     <div class="pointer-events-none relative z-10">
                         <div class="flex items-center justify-between">
                             <UIcon
@@ -167,23 +160,9 @@ onBeforeUnmount(() => {
                         </p>
                     </div>
 
-                    <div class="pointer-events-none relative z-10 mt-12">
-                        <span
-                            class="inline-flex items-center gap-3 text-base font-medium"
-                            :class="
-                                panel.accent === 'brand'
-                                    ? 'text-brand-400'
-                                    : 'text-accent-400'
-                            "
-                        >
-                            {{ $t(`home.paths.${panel.id}.cta`) }}
-                            <UIcon
-                                name="i-lucide-arrow-up-right"
-                                class="size-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                            ></UIcon>
-                        </span>
+                    <div class="pointer-events-none relative z-10">
                         <div
-                            class="pointer-events-auto mt-8 flex items-center gap-5 border-t border-white/10 pt-8 w-36 h-20 justify-center"
+                            class="pointer-events-auto mt-8 flex items-center gap-6 border-t border-white/10 w-fit h-20 justify-center"
                         >
                             <a
                                 v-for="social in panel.socials"
@@ -195,7 +174,7 @@ onBeforeUnmount(() => {
                             >
                                 <UIcon
                                     :name="social.icon"
-                                    class="size-4"
+                                    class="size-6"
                                 ></UIcon>
                                 <span class="sr-only">{{ social.label }}</span>
                             </a>

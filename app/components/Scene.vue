@@ -17,6 +17,7 @@ const isPerspective = (c: Camera | undefined): c is PerspectiveCamera =>
 
 const { camera: activeCamera, renderer } = useTres();
 const { camera, root, letters, material } = useSceneRefs();
+const { tier, rendersCanvas } = useMotionTier();
 
 const rootEl = shallowRef();
 const letterEls = shallowRef<Group[]>([]);
@@ -174,7 +175,10 @@ onUnmounted(() => {
 
     <TresAmbientLight :intensity="20" color="#ffffff" />
     <TresPointLight :position="rimLight" :intensity="100" color="#39A862" />
-
+    <SceneBackgroundMesh
+        v-if="rendersCanvas"
+        :tier="tier === 'full' ? 'full' : 'lite'"
+    />
     <TresGroup ref="rootEl">
         <TresGroup
             v-for="(letter, i) in built"

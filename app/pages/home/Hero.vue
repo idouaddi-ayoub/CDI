@@ -200,15 +200,6 @@ onBeforeUnmount(() => ctx?.revert());
                         </UButton>
                     </template>
                 </UModal>
-
-                <UButton
-                    :to="LINKS.business"
-                    size="xl"
-                    variant="outline"
-                    class="px-8"
-                >
-                    {{ $t("home.hero.ctaBusiness") }}
-                </UButton>
             </div>
         </div>
     </section>

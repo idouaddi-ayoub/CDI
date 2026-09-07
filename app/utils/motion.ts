@@ -1,8 +1,4 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-
-gsap.registerPlugin(ScrollTrigger, SplitText);
+import { gsap, ScrollTrigger, SplitText } from "~/utils/gsap";
 
 export const ENTER = "top 82%";
 

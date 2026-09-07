@@ -23,10 +23,12 @@ function probeWebGL(): boolean {
       canvas.getContext("webgl2") ??
       canvas.getContext("webgl") ??
       canvas.getContext("experimental-webgl");
+
     if (!gl) return false;
     const lose = (gl as WebGLRenderingContext).getExtension(
       "WEBGL_lose_context",
     ) as { loseContext(): void } | null;
+
     lose?.loseContext();
     return true;
   } catch {

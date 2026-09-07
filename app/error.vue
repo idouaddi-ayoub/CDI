@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import type { NuxtError } from "#app";
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { LINKS, EXTERNAL_ATTRS } from "@/utils/links";
+import { gsap, SplitText } from "~/utils/gsap";
 
-gsap.registerPlugin(SplitText);
+import { LINKS, EXTERNAL_ATTRS } from "@/utils/links";
 
 const props = defineProps<{ error: NuxtError }>();
 

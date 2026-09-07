@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import type { SplitText } from "gsap/SplitText";
+import { gsap, SplitText } from "~/utils/gsap";
 
 const root = useTemplateRef<HTMLElement>("root");
 const heading = useTemplateRef<HTMLHeadingElement>("heading");

@@ -9,7 +9,7 @@ import {
 } from "three";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "~/utils/gsap";
 import type { Camera, Group, PerspectiveCamera } from "three";
 
 const isPerspective = (c: Camera | undefined): c is PerspectiveCamera =>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import type { SplitText } from "gsap/SplitText";
+import { gsap, SplitText } from "~/utils/gsap";
 import { LINKS, CLUB_SOCIALS, EXTERNAL_ATTRS } from "@/utils/links";
 
 const root = useTemplateRef<HTMLElement>("root");
@@ -60,19 +59,12 @@ onBeforeUnmount(() => {
                 data-reveal
             >
                 <a
-                    :href="LINKS.join"
+                    :href="LINKS.club.instagram"
                     v-bind="EXTERNAL_ATTRS"
                     class="inline-flex items-center gap-3 rounded-full bg-brand-500 px-10 py-5 text-base font-medium text-ink-950 transition-colors hover:bg-brand-400"
                 >
                     {{ $t("home.finalCta.ctaStudent") }}
                     <UIcon name="i-lucide-arrow-up-right" class="size-5" />
-                </a>
-
-                <a
-                    :href="LINKS.business"
-                    class="inline-flex items-center gap-2 text-base text-fg-muted underline-offset-8 transition-colors hover:text-fg hover:underline"
-                >
-                    {{ $t("home.finalCta.ctaBusiness") }}
                 </a>
             </div>
         </div>
@@ -91,12 +83,6 @@ onBeforeUnmount(() => {
                         class="eyebrow transition-colors hover:text-fg"
                     >
                         {{ $t("home.footer.location") }}
-                    </a>
-                    <a
-                        :href="LINKS.business"
-                        class="eyebrow transition-colors hover:text-fg"
-                    >
-                        {{ LINKS.email }}
                     </a>
                 </div>
 

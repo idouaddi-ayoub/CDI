@@ -10,7 +10,7 @@
     "scroll": "Scroll",
     "since": "Est. 2018",
     "joinModal": {
-      "body": "Recruitment day is coming soon — stay tuned and follow us so you don't miss it.",
+      "body": "Recruitment day is coming soon stay tuned and follow us so you don't miss it.",
       "cta": "Follow our socials"
     }
   },
@@ -24,20 +24,20 @@
     },
     "business": {
       "title": "I'm a business",
-      "body": "Partner with us, sponsor an event, or hire a team of sharp students for your next digital project — web, design, branding, or content.",
+      "body": "Partner with us, sponsor an event, or hire a team of sharp students for your next digital project web, design, branding, or content.",
       "cta": "Start a conversation"
     }
   },
   "about": {
     "eyebrow": "WHO WE ARE",
-    "body": "Since 2018, CDI has grown from a handful of students into one of the most active tech communities on campus. No lectures, no gatekeeping — just late nights, real projects, and people helping each other, one project at a time.",
+    "body": "Since 2018, CDI has grown from a handful of students into one of the most active tech communities on campus. No lectures, no gatekeeping just late nights, real projects, and people helping each other, one project at a time.",
     "title": "A community built by geeks, for geeks."
   },
   "events": {
     "eyebrow": "Our flagship event",
     "title": "E-DAY",
     "edition": "X.0",
-    "body": "A full day of talks and networking with industry professionals. Our biggest stage — and a chance for partners to reach hundreds of students.",
+    "body": "A full day of talks and networking with industry professionals. Our biggest stage and a chance for partners to reach hundreds of students.",
     "ctaSee": "See our events",
     "ctaSponsor": "Sponsor the next one",
     "highlights": {
@@ -47,7 +47,7 @@
       },
       "talks": {
         "title": "Tech Talks",
-        "body": "'Ideas from people who've actually done the thing.' — leans into credibility of the speaker over the format."
+        "body": "'Ideas from people who've actually done the thing.' leans into credibility of the speaker over the format."
       },
       "network": {
         "title": "Networking",

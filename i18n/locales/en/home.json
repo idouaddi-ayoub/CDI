@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "line1": "Become more",
+    "line2": "with CDI",
+    "lead": "Become more with",
+    "full": "Become more with CDI",
+    "sub": "A student-run digital club at ENCG Agadir. Build real things, with real people.",
+    "ctaStudent": "Join the club",
+    "ctaBusiness": "Work with us",
+    "scroll": "Scroll",
+    "since": "Est. 2018",
+    "joinModal": {
+      "body": "Recruitment day is coming soon stay tuned and follow us so you don't miss it.",
+      "cta": "Follow our socials"
+    }
+  },
+  "paths": {
+    "eyebrow": "Two ways in",
+    "title": "Which one are you?",
+    "student": {
+      "title": "I'm a student",
+      "body": "Join a community that codes, designs, and pitch. Build real projects, meet people who make things, and put something on your CV before you graduate.",
+      "cta": "Join the club"
+    },
+    "business": {
+      "title": "I'm a business",
+      "body": "Partner with us, sponsor an event, or hire a team of sharp students for your next digital project web, design, branding, or content.",
+      "cta": "Start a conversation"
+    }
+  },
+  "about": {
+    "eyebrow": "WHO WE ARE",
+    "body": "Since 2018, CDI has grown from a handful of students into one of the most active tech communities on campus. No lectures, no gatekeeping just late nights, real projects, and people helping each other, one project at a time.",
+    "title": "A community built by geeks, for geeks."
+  },
+  "events": {
+    "eyebrow": "Our flagship event",
+    "title": "E-DAY",
+    "edition": "X.0",
+    "body": "A full day of talks and networking with industry professionals. Our biggest stage and a chance for partners to reach hundreds of students.",
+    "ctaSee": "See our events",
+    "ctaSponsor": "Sponsor the next one",
+    "highlights": {
+      "speaker": {
+        "title": "Speaker Series",
+        "body": "Founders on what the work actually looks like."
+      },
+      "talks": {
+        "title": "Tech Talks",
+        "body": "'Ideas from people who've actually done the thing.' leans into credibility of the speaker over the format."
+      },
+      "network": {
+        "title": "Networking",
+        "body": "Hundreds of students in one room with the people who hire them."
+      }
+    }
+  },
+  "finalCta": {
+    "title": "Ready to become more?",
+    "sub": "Whether you want to join or work with us, we're one message away.",
+    "ctaStudent": "Join the club",
+    "ctaBusiness": "Get in touch",
+    "eyebrow": "Last stop"
+  },
+  "nav": {
+    "home": "Home",
+    "join": "Join",
+    "about": "About",
+    "event": "E-DAY",
+    "contact": "Contact",
+    "cta": "Join the club",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language"
+  },
+  "sections": {
+    "hero": "Intro",
+    "paths": "Two ways in",
+    "proof": "Track record",
+    "event": "E-DAY",
+    "contact": "Get in touch"
+  },
+  "loader": {
+    "label": "Loading"
+  },
+  "footer": {
+    "club": "The club",
+    "agency": "The agency",
+    "contact": "Contact",
+    "location": "ENCG Agadir, Morocco",
+    "rights": "All rights reserved."
+  }
+}

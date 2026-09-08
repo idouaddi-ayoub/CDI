@@ -1,0 +1,13 @@
+{
+  "eyebrow": "Error {code}",
+  "notFound": {
+    "title": "Nothing here",
+    "body": "This page doesn't exist the link is broken, or it moved. The club and the agency both live on one page, so that's the place to start."
+  },
+  "generic": {
+    "title": "Something broke",
+    "body": "An unexpected error stopped this page from loading. Try again in a moment, or head back to the homepage."
+  },
+  "home": "Back home",
+  "join": "Join the club"
+}

@@ -1,48 +1,24 @@
 export default defineAppConfig({
   ui: {
+    colors: {
+      primary: "brand",
+      secondary: "accent",
+      neutral: "slate",
+    },
+
     button: {
-      variants: {
-        border: {
-          rounded: "rounded-4xl ",
-        },
-      },
-      compoundVariants: [
-        // ghost
-        // link
-        // outline
-        // soft
-        // solid
-        {
-          color: "primary",
-          variant: "solid",
-          class:
-            "border border-green-default bg-green-default hover:bg-primary/25 capitalize hover:text-white",
-        },
-        // subtle
-      ],
       defaultVariants: {
-        color: "primary",
-        variant: "solid",
-        size: "xl",
-        border: "rounded",
+        size: "md",
+      },
+      slots: {
+        base: "font-medium rounded-full transition",
       },
     },
-    badge: {
-      base: "rounded-4xl",
-      variants: {
-        border: {
-          rounded: "rounded-4xl ",
-        },
+
+    card: {
+      slots: {
+        root: "rounded-2xl",
       },
-      compoundVariants: [
-        {
-          color: "primary",
-          variant: "solid",
-          class:
-            "border rounded-4xl justify-center items-center border-green-default bg-green-default  capitalize ",
-        },
-        // subtle
-      ],
     },
   },
 });

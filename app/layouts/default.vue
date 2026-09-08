@@ -1,12 +1,35 @@
 <script setup lang="ts">
-import { SpeedInsights } from "@vercel/speed-insights/vue";
+import { ACESFilmicToneMapping } from "three";
+import { TresCanvas } from "@tresjs/core";
+import Navigation from "@/components/Navigation.vue";
+import PreLoader from "@/components/PreLoader.vue";
+
+const { rendersCanvas, isFull } = useMotionTier();
 </script>
 
 <template>
-  <SpeedInsights />
-  <div>
-    <Navbar />
-    <NuxtPage />
-    <Footer />
-  </div>
+    <div>
+        <PreLoader />
+        <Navigation />
+
+        <div
+            aria-hidden="true"
+            class="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(ellipse_70%_55%_at_60%_40%,rgba(34,197,94,0.14),transparent_50%)]"
+        />
+        <div
+            v-if="rendersCanvas"
+            class="pointer-events-none fixed inset-0 -z-10"
+        >
+            <TresCanvas
+                window-size
+                clear-color="#080b0a"
+                :tone-mapping="ACESFilmicToneMapping"
+                :dpr="isFull ? [1, 1.75] : [1, 1.5]"
+            >
+                <Scene />
+            </TresCanvas>
+        </div>
+
+        <main><slot /></main>
+    </div>
 </template>

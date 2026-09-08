@@ -1,154 +1,192 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { useLoop } from "@tresjs/core";
-import { shallowRef, onMounted, onUnmounted } from "vue";
-import { Vector3, ExtrudeGeometry, BufferGeometry } from "three";
-import type { Group, PerspectiveCamera } from "three";
-import { SVGLoader } from "three/examples/jsm/loaders/SVGLoader.js";
-import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
-import { useMotionTier } from "../composables/useMotionTier";
+import { shallowRef, onMounted, onUnmounted, nextTick } from "vue";
+import {
+    Box3,
+    BufferGeometry,
+    ExtrudeGeometry,
+    MeshStandardMaterial,
+    Vector3,
+} from "three";
+import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
+import { ScrollTrigger } from "~/utils/gsap";
+import type { Camera, Group, PerspectiveCamera } from "three";
 
-const { animates } = useMotionTier();
-const intro = { t: 0 };
+const isPerspective = (c: Camera | undefined): c is PerspectiveCamera =>
+    (c as PerspectiveCamera | undefined)?.isPerspectiveCamera === true;
 
-gsap.to(intro, {
-    t: 1,
-    duration: 1.8,
-    ease: "power1.out",
+const { camera: activeCamera, renderer } = useTres();
+const { camera, root, letters, material } = useSceneRefs();
+const { tier, rendersCanvas } = useMotionTier();
+
+const rootEl = shallowRef();
+const letterEls = shallowRef<Group[]>([]);
+
+const TARGET_WIDTH = 5;
+const EXTRUDE_DEPTH = 40;
+
+type Letter = { geometry: BufferGeometry; offset: number };
+const built = shallowRef<Letter[]>([]);
+
+const surface = new MeshStandardMaterial({
+    color: "#ffffff",
+    metalness: 0.0,
+    roughness: 0.3,
 });
-const props = withDefaults(
-    defineProps<{ scroll?: number; interactive?: boolean }>(),
-    { scroll: 0, interactive: true },
-);
+material.value = surface;
 
-const wordmark = shallowRef<Group>();
-const camera = shallowRef<PerspectiveCamera>();
-const logoGeometry = shallowRef<BufferGeometry>();
+const cameraPosition = new Vector3(0, 0, 7);
+const rimLight = new Vector3(0, 0, 0.2);
 
-const TARGET_WIDTH = 5; // final width in world units
-const EXTRUDE_DEPTH = 40; // in SVG units, scaled down later
-
-onMounted(async () => {
-    const svg = await (await fetch("/CDI_logo.svg")).text();
-    const data = new SVGLoader().parse(svg);
-
-    const parts: BufferGeometry[] = [];
-    for (const path of data.paths) {
-        for (const shape of path.toShapes()) {
-            parts.push(
-                new ExtrudeGeometry(shape, {
-                    depth: EXTRUDE_DEPTH,
-                    curveSegments: 8,
-                    bevelEnabled: true,
-                    bevelThickness: 5,
-                    bevelSize: 4,
-                    bevelSegments: 3,
-                }),
-            );
-        }
-    }
-
-    const merged = mergeGeometries(parts, false);
-    parts.forEach((g) => g.dispose());
-    if (!merged) return;
-
-    merged.rotateX(Math.PI); // SVG Y-down → three Y-up
-    merged.computeBoundingBox();
-    const size = new Vector3();
-    merged.boundingBox!.getSize(size);
-    const k = TARGET_WIDTH / size.x;
-    merged.scale(k, k, k);
-    merged.center();
-    merged.computeVertexNormals();
-
-    logoGeometry.value = merged;
-    if (!animates.value) {
-        intro.t = 1;
-        return;
-    }
-    gsap.to(intro, { t: 1, duration: 1.8, ease: "power3.out" });
-});
-
-onUnmounted(() => {
-    gsap.killTweensOf(intro);
-    logoGeometry.value?.dispose();
-});
-
-/* --- camera / pointer / loop: unchanged from your version --- */
-const pointer = { x: 0, y: 0 };
-const damped = { x: 0, y: 0 };
-function onPointerMove(e: PointerEvent) {
-    pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
-    pointer.y = (e.clientY / window.innerHeight) * 2 - 1;
-}
-function computeCameraZ() {
+function frameCamera() {
     const aspect = window.innerWidth / window.innerHeight;
-    return aspect < 1 ? 7 / aspect : 7;
-}
-const cameraPosition = new Vector3(0, 0, computeCameraZ());
-const keyLight = new Vector3(4, 6, 8);
-const rimLight = new Vector3(-6, -2, 4);
-const fillLight = new Vector3(6, 3, -4);
-function onResize() {
-    cameraPosition.setZ(computeCameraZ());
+    cameraPosition.setZ(aspect < 1 ? 7 / aspect : 7);
     if (camera.value) {
         camera.value.position.copy(cameraPosition);
         camera.value.updateProjectionMatrix();
     }
 }
-window.addEventListener("pointermove", onPointerMove, { passive: true });
-window.addEventListener("resize", onResize, { passive: true });
-onUnmounted(() => {
-    window.removeEventListener("pointermove", onPointerMove);
-    window.removeEventListener("resize", onResize);
+
+function clusterByLetter(pieces: { geometry: BufferGeometry; box: Box3 }[]) {
+    const sorted = [...pieces].sort((a, b) => a.box.min.x - b.box.min.x);
+    const clusters: (typeof sorted)[] = [];
+
+    for (const piece of sorted) {
+        const current = clusters.at(-1);
+        const rightEdge = current?.reduce(
+            (max, p) => Math.max(max, p.box.max.x),
+            -Infinity,
+        );
+        if (current && rightEdge !== undefined && piece.box.min.x < rightEdge) {
+            current.push(piece);
+        } else {
+            clusters.push([piece]);
+        }
+    }
+    return clusters;
+}
+
+onMounted(async () => {
+    const svg = await (await fetch("/CDI_logo.svg")).text();
+    const paths = new SVGLoader().parse(svg).paths;
+
+    const pieces = paths.flatMap((path) =>
+        path.toShapes().map((shape) => {
+            const geometry = new ExtrudeGeometry(shape, {
+                depth: EXTRUDE_DEPTH,
+                curveSegments: 8,
+                bevelEnabled: true,
+                bevelThickness: 5,
+                bevelSize: 4,
+                bevelSegments: 3,
+            });
+            geometry.rotateX(Math.PI);
+            geometry.computeBoundingBox();
+            return { geometry, box: geometry.boundingBox!.clone() };
+        }),
+    );
+
+    const whole = new Box3();
+    pieces.forEach((p) => whole.union(p.box));
+    const size = new Vector3();
+    whole.getSize(size);
+    const scale = TARGET_WIDTH / size.x;
+    const centre = new Vector3();
+    whole.getCenter(centre);
+
+    built.value = clusterByLetter(pieces).map((cluster) => {
+        const merged = mergeGeometries(
+            cluster.map((c) => c.geometry),
+            false,
+        )!;
+        cluster.forEach((c) => c.geometry.dispose());
+
+        merged.translate(-centre.x, -centre.y, -centre.z);
+        merged.scale(scale, scale, scale);
+        merged.computeBoundingBox();
+
+        const own = new Vector3();
+        merged.boundingBox!.getCenter(own);
+        merged.translate(-own.x, 0, 0);
+        merged.computeVertexNormals();
+
+        return { geometry: merged, offset: own.x };
+    });
+
+    await nextTick();
+    root.value = rootEl.value;
+    letters.value = letterEls.value;
+    ScrollTrigger.refresh();
 });
 
-const BASE_Y = 0.9;
-const { onBeforeRender } = useLoop();
-onBeforeRender(({ elapsed, delta }) => {
-    const group = wordmark.value;
-    if (!group) return;
+onMounted(() => {
+    if (isPerspective(activeCamera.value)) camera.value = activeCamera.value;
+    frameCamera();
+    window.addEventListener("resize", frameCamera, { passive: true });
+});
+const { downgrade } = useMotionTier();
 
-    const k = 1 - Math.pow(0.0015, delta);
-    const target = props.interactive ? pointer : { x: 0, y: 0 };
-    damped.x += (target.x - damped.x) * k;
-    damped.y += (target.y - damped.y) * k;
+onMounted(() => {
+    const canvas = renderer.domElement;
+    if (!canvas) {
+        console.error(
+            "Could not resolve canvas from useTres().renderer — check its shape:",
+            renderer,
+            renderer.debug,
+        );
+        return;
+    }
 
-    const s = props.scroll;
-    const t = intro.t;
+    let restoreTimeout: ReturnType<typeof setTimeout> | undefined;
 
-    // ambient + pointer + scroll, faded in by t
-    group.rotation.y =
-        (Math.sin(elapsed * 0.35) * 0.08 + damped.x * 0.5) * t +
-        s * 1.15 +
-        (1 - t) * -Math.PI * 0.6; // spins in from -108°
-    group.rotation.x = -damped.y * 0.3 * t + s * 0.45;
+    const onLost = (e: Event) => {
+        e.preventDefault();
+        restoreTimeout = setTimeout(() => downgrade(), 3000);
+    };
+    const onRestored = () => clearTimeout(restoreTimeout);
 
-    group.position.z = -s * 6 + (1 - t) * -8; // flies in from far back
-    group.position.y = BASE_Y + s * 1.2;
+    canvas.addEventListener("webglcontextlost", onLost);
+    canvas.addEventListener("webglcontextrestored", onRestored);
 
-    const scale = 0.7 + 0.3 * t;
-    group.scale.setScalar(scale);
+    onUnmounted(() => {
+        clearTimeout(restoreTimeout);
+        canvas.removeEventListener("webglcontextlost", onLost);
+        canvas.removeEventListener("webglcontextrestored", onRestored);
+    });
+});
+
+onUnmounted(() => {
+    window.removeEventListener("resize", frameCamera);
+    built.value.forEach((l) => l.geometry.dispose());
+    surface.dispose();
+    camera.value = undefined;
+    root.value = undefined;
+    letters.value = [];
 });
 </script>
 
 <template>
-    <TresPerspectiveCamera ref="camera" :position="cameraPosition" :fov="45" />
-    <TresAmbientLight :intensity="0.6" />
-    <TresDirectionalLight
-        :position="keyLight"
-        :intensity="3.4"
-        color="#22c55e"
+    <TresPerspectiveCamera
+        :position="cameraPosition"
+        :fov="45"
+        :near="0.1"
+        :far="200"
     />
-    <TresPointLight :position="rimLight" :intensity="26" color="#ffffff" />
-    <TresPointLight :position="fillLight" :intensity="12" color="#ffffff" />
-    <TresGroup ref="wordmark">
-        <TresMesh v-if="logoGeometry" :geometry="logoGeometry">
-            <TresMeshStandardMaterial
-                color="#243330"
-                :roughness="0.3"
-                :metalness="0.7"
-            />
-        </TresMesh>
+
+    <TresAmbientLight :intensity="20" color="#ffffff" />
+    <TresPointLight :position="rimLight" :intensity="100" color="#39A862" />
+    <SceneBackgroundMesh
+        v-if="rendersCanvas"
+        :tier="tier === 'full' ? 'full' : 'lite'"
+    />
+    <TresGroup ref="rootEl">
+        <TresGroup
+            v-for="(letter, i) in built"
+            :key="i"
+            ref="letterEls"
+            :position-x="letter.offset"
+        >
+            <TresMesh :geometry="letter.geometry" :material="surface" />
+        </TresGroup>
     </TresGroup>
 </template>

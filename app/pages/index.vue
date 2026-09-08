@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import Hero from "./home/Hero.vue";
-import Paths from "./home/Paths.vue";
-import Proof from "./home/Proof.vue";
+import About from "./home/About.vue";
 import Event from "./home/Event.vue";
+import Paths from "./home/Paths.vue";
 import Contact from "./home/Contact.vue";
 
-const revealScope = useTemplateRef<HTMLElement>("revealScope");
-useScrollReveal(revealScope);
-
 const { t } = useI18n();
+
+const SECTIONS = ["hero", "about", "event", "paths", "contact"] as const;
+
+useScenePose([...SECTIONS]);
 
 useSeoMeta({
     title: () => t("seo.home.title"),
@@ -17,11 +18,11 @@ useSeoMeta({
 </script>
 
 <template>
-    <main ref="revealScope">
+    <div>
         <Hero />
-        <Paths />
-        <Proof />
+        <About />
         <Event />
+        <Paths />
         <Contact />
-    </main>
+    </div>
 </template>

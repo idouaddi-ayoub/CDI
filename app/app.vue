@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import type { Link } from "@unhead/vue";
 import { SITE_URL } from "@/utils/links";
-// import { Analytics } from "@vercel/analytics/vue";
+import { Analytics } from "@vercel/analytics/vue";
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
 
-// Every text value is a getter, not a plain string: switching locale is a
-// client-side navigation, so these have to re-resolve rather than keep the
-// copy that was rendered at build time.
 useSeoMeta({
     title: "CDI",
     ogTitle: () => t("seo.site.ogTitle"),
@@ -26,11 +23,6 @@ useSeoMeta({
     robots: "index, follow",
 });
 
-// @nuxtjs/i18n sets no head tags on its own. This is what makes the active
-// locale real to crawlers and screen readers: <html lang>, plus hreflang
-// alternates pairing / with /fr. Its og:locale meta is skipped — useSeoMeta
-// above already owns that tag — and the cast bridges the module's link type,
-// which is looser than unhead's.
 const localeHead = useLocaleHead();
 useHead(() => ({
     htmlAttrs: localeHead.value.htmlAttrs,
@@ -49,7 +41,7 @@ useHead({
 <template>
     <UApp>
         <NuxtRouteAnnouncer />
-        <!-- <Analytics /> -->
+        <Analytics />
         <NuxtLayout>
             <NuxtPage />
         </NuxtLayout>

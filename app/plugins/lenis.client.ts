@@ -1,10 +1,7 @@
 import Lenis from "lenis";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "~/utils/gsap";
 
 export default defineNuxtPlugin(() => {
-  gsap.registerPlugin(ScrollTrigger);
-
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const lenis = reduce

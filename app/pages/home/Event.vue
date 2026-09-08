@@ -1,57 +1,57 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, SplitText } from "~/utils/gsap";
 import { LINKS } from "@/utils/links";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const { isFull, animates } = useMotionTier();
 
 const root = useTemplateRef<HTMLElement>("root");
 const panel = useTemplateRef<HTMLElement>("panel");
+const title = useTemplateRef<HTMLHeadingElement>("title");
 const edition = useTemplateRef<HTMLElement>("edition");
 
+const highlights = ["speaker", "talks", "network"] as const;
+
 let ctx: gsap.Context | undefined;
+let split: SplitText | undefined;
 
 onMounted(() => {
-    if (!animates.value || !root.value) return;
+    const tier = resolveMotionTier();
+    if (tier === "static" || !root.value) return;
 
-    ctx = gsap.context(() => {
-        if (isFull.value) {
-            const tl = gsap.timeline({
+    ctx = gsap.context((self) => {
+        split = revealLines(title.value, root.value, { start: "top 70%" });
+
+        gsap.fromTo(
+            panel.value!,
+            { clipPath: "inset(0% 0% 100% 0%)" },
+            {
+                clipPath: "inset(0% 0% 0% 0%)",
+                duration: 1.2,
+                ease: "power3.out",
                 scrollTrigger: {
                     trigger: root.value!,
-                    start: "top top",
-                    end: "+=60%",
-                    pin: true,
-                    scrub: 0.5,
-                    refreshPriority: 1,
+                    start: "top 70%",
+                    once: true,
                 },
-            });
+            },
+        );
 
-            tl.fromTo(
-                panel.value!,
-                { clipPath: "inset(0% 0% 100% 0%)" },
-                { clipPath: "inset(0% 0% 0% 0%)", ease: "none", duration: 1 },
-                0,
-            ).fromTo(
-                edition.value!,
-                { yPercent: 12 },
-                { yPercent: -12, ease: "none", duration: 1 },
-                0,
-            );
-        } else {
+        riseIn(self.selector?.("[data-highlight]") ?? [], root.value, {
+            y: 32,
+            delay: 0.25,
+            stagger: 0.12,
+        });
+
+        if (tier === "full") {
             gsap.fromTo(
-                panel.value!,
-                { clipPath: "inset(0% 0% 100% 0%)" },
+                edition.value!,
+                { yPercent: 14 },
                 {
-                    clipPath: "inset(0% 0% 0% 0%)",
-                    duration: 1.1,
-                    ease: "power3.out",
+                    yPercent: -14,
+                    ease: "none",
                     scrollTrigger: {
                         trigger: root.value!,
-                        start: "top 75%",
-                        once: true,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 0.5,
                     },
                 },
             );
@@ -59,50 +59,72 @@ onMounted(() => {
     }, root.value);
 });
 
-onBeforeUnmount(() => ctx?.revert());
+onBeforeUnmount(() => {
+    split?.revert();
+    ctx?.revert();
+});
 </script>
 
 <template>
     <section
         id="event"
         ref="root"
-        class="relative flex min-h-svh items-center overflow-hidden"
+        class="relative flex min-h-svh items-center overflow-hidden px-6 py-32 sm:px-10"
     >
         <div
             aria-hidden="true"
-            class="pointer-events-none absolute inset-y-0 right-0 -z-10 flex translate-x-[10%] items-center"
+            class="pointer-events-none absolute inset-y-0 left-0 -z-10 hidden w-2/5 items-center justify-center lg:flex"
         >
-            <div
+            <span
                 ref="edition"
-                class="display select-none leading-none text-transparent opacity-40 [-webkit-text-stroke:1px_var(--color-brand-500)] text-[clamp(9rem,30vw,24rem)]"
+                class="display select-none text-[clamp(6rem,14vw,14rem)] leading-none text-brand-500/12"
             >
                 {{ $t("home.events.edition") }}
-            </div>
+            </span>
         </div>
 
-        <div class="mx-auto w-full max-w-7xl px-6 py-24 sm:px-10">
-            <div ref="panel">
-                <div>
-                    <p class="eyebrow text-brand-400">
-                        {{ $t("home.events.eyebrow") }}
-                    </p>
-                    <h2 class="display mt-5 text-5xl sm:text-7xl lg:text-8xl">
-                        {{ $t("home.events.title") }}
-                    </h2>
-                    <p class="mt-8 max-w-lg text-base text-fg-muted sm:text-lg">
-                        {{ $t("home.events.body") }}
-                    </p>
+        <div class="mx-auto w-full max-w-7xl">
+            <div ref="panel" class="lg:ml-auto lg:w-[54%]">
+                <p class="eyebrow text-brand-400">
+                    {{ $t("home.events.eyebrow") }}
+                </p>
 
-                    <div class="mt-10 flex flex-wrap gap-4">
-                        <UButton
-                            :to="LINKS.eday"
-                            size="xl"
-                            color="primary"
-                            class="px-8"
-                        >
-                            {{ $t("home.events.ctaSponsor") }}
-                        </UButton>
-                    </div>
+                <h2
+                    ref="title"
+                    class="display mt-5 text-5xl sm:text-7xl lg:text-8xl"
+                >
+                    {{ $t("home.events.title") }}
+                </h2>
+
+                <p class="mt-8 max-w-lg text-base text-fg-muted sm:text-lg">
+                    {{ $t("home.events.body") }}
+                </p>
+
+                <ul class="mt-12 max-w-lg">
+                    <li
+                        v-for="h in highlights"
+                        :key="h"
+                        data-highlight
+                        class="border-t border-white/10 py-5 last:border-b"
+                    >
+                        <p class="text-sm font-medium">
+                            {{ $t(`home.events.highlights.${h}.title`) }}
+                        </p>
+                        <p class="mt-2 text-sm text-fg-muted">
+                            {{ $t(`home.events.highlights.${h}.body`) }}
+                        </p>
+                    </li>
+                </ul>
+
+                <div data-highlight class="mt-12 flex flex-wrap gap-4">
+                    <UButton
+                        :to="LINKS.eday"
+                        size="xl"
+                        color="primary"
+                        class="px-8"
+                    >
+                        {{ $t("home.events.ctaSponsor") }}
+                    </UButton>
                 </div>
             </div>
         </div>

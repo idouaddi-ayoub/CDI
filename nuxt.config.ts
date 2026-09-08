@@ -13,23 +13,32 @@ export default defineNuxtConfig({
     },
   },
   typescript: { typeCheck: true },
-  modules: ["@nuxt/ui", "@nuxt/image", "@nuxtjs/i18n", "@tresjs/nuxt"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/image",
+    "@nuxtjs/i18n",
+    "@tresjs/nuxt",
+    "@nuxt/hints",
+  ],
   icon: {
     serverBundle: {
-      collections: ["lucide", "simple-icons"],
+      collections: ["lucide", "simple-icons", "circle-flags"],
     },
   },
+
   extends: ["./layers/auth"],
   css: ["~/assets/css/main.css", "lenis/dist/lenis.css"],
   colorMode: {
     preference: "dark",
   },
   routeRules: {
-    // The site is one page per locale, so both get prerendered — the French
-    // route is a real URL, not a client-side swap of the English build.
     "/": { prerender: true },
     "/fr": { prerender: true },
   },
+  build: {
+    transpile: ["gsap"],
+  },
+
   vite: {
     build: {
       rollupOptions: {
@@ -85,30 +94,30 @@ export default defineNuxtConfig({
         {
           rel: "preload",
           as: "font",
-          type: "font/woff2",
-          href: "/fonts/space-grotesk/SpaceGrotesk-latin.woff2",
+          type: "font/otf",
+          href: "/fonts/Fontspring-DEMO-anguitasans-blackit.otf",
           crossorigin: "anonymous",
         },
       ],
-      //       script: [
-      //         {
-      //           innerHTML: `
-      //             !function (w, d, t) {
-      //   w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-      // var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-      // ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-      //   ttq.load('D677VBJC77UB9P1M6ADG');
-      //   ttq.page();
-      // }(window, document, 'ttq');
-      //           `,
-      //           type: "text/javascript",
-      //         },
-      //       ],
-      //       noscript: [
-      //         {
-      //           innerHTML: `<img height="1" width="1" style="display:none" src="https://analytics.tiktok.com/i18n/pixel/events.js?pixel_id=D677VBJC77UB9P1M6ADG&track=PageView&noscript=1" />`,
-      //         },
-      //       ],
+      script: [
+        {
+          innerHTML: `
+                  !function (w, d, t) {
+        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+      var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+      ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+        ttq.load('D677VBJC77UB9P1M6ADG');
+        ttq.page();
+      }(window, document, 'ttq');
+                `,
+          type: "text/javascript",
+        },
+      ],
+      noscript: [
+        {
+          innerHTML: `<img height="1" width="1" style="display:none" src="https://analytics.tiktok.com/i18n/pixel/events.js?pixel_id=D677VBJC77UB9P1M6ADG&track=PageView&noscript=1" />`,
+        },
+      ],
     },
   },
 });

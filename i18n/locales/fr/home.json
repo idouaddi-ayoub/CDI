@@ -8,14 +8,18 @@
     "ctaStudent": "Rejoindre le club",
     "ctaBusiness": "Collaborer avec nous",
     "scroll": "Faire défiler",
-    "since": "Depuis 2018"
+    "since": "Depuis 2018",
+    "joinModal": {
+      "body": "Le jour du recrutement arrive bientôt restez à l'écoute pour ne pas le manquer.",
+      "cta": "Suivre nos réseaux"
+    }
   },
   "paths": {
     "eyebrow": "Deux façons de nous rejoindre",
     "title": "Qui êtes-vous ?",
     "student": {
       "title": "Je suis étudiant(e)",
-      "body": "Apprenez à développer, concevoir et présenter vos idées. Réalisez des projets concrets, rencontrez des personnes passionnées et enrichissez votre CV avant même d'obtenir votre diplôme.",
+      "body": "Rejoignez une communauté qui développe, concevoir et présenter vos idées. Réalisez des projets concrets, rencontrez des personnes passionnées et enrichissez votre CV avant même d'obtenir votre diplôme.",
       "cta": "Rejoindre le club"
     },
     "business": {
@@ -24,35 +28,44 @@
       "cta": "Entrer en contact"
     }
   },
-  "proof": {
+  "about": {
     "eyebrow": "Sept ans d'expérience",
-    "stats": {
-      "founded": "Fondé",
-      "members": "Membres",
-      "events": "Événements organisés",
-      "eday": "Éditions d'E-DAY"
-    },
-    "quote": "Le CDI est l'endroit où je suis passé de ma première ligne de code à la direction d'une équipe projet. Cela a complètement changé ma vision de ce dont j'étais capable.",
-    "quoteBy": "Un membre du CDI"
+    "body": "Depuis 2018, CDI est passé d'une poignée d'étudiants à l'une des communautés tech les plus actives du campus. Pas de cours magistraux, pas de barrières à l'entrée juste des nuits blanches, de vrais projets, et des gens qui s'entraident, un projet à la fois.",
+    "title": "Des chiffres que l'on assume."
   },
   "events": {
     "eyebrow": "Notre événement phare",
     "title": "E-DAY",
-    "edition": "3.0",
-    "body": "Une journée complète de conférences, d'ateliers et de networking avec des professionnels, des développeurs et des designers. Notre plus grand rendez-vous, et une occasion unique pour nos partenaires de rencontrer des centaines d'étudiants.",
+    "edition": "X.0",
+    "body": "Une journée complète de conférences et de networking avec des professionnels. Notre plus grand rendez-vous, et une occasion unique pour nos partenaires de rencontrer des centaines d'étudiants.",
     "ctaSee": "Découvrir nos événements",
-    "ctaSponsor": "Sponsoriser la prochaine édition"
+    "ctaSponsor": "Sponsoriser la prochaine édition",
+    "highlights": {
+      "speaker": {
+        "title": "Speaker Series",
+        "body": "Des fondateurs qui parlent de ce à quoi ressemble vraiment le travail."
+      },
+      "talks": {
+        "title": "Tech Talks",
+        "body": "Des idées venant de gens qui ont vraiment fait le truc."
+      },
+      "network": {
+        "title": "Networking",
+        "body": "Des centaines d'étudiants dans la même salle que ceux qui les embauchent."
+      }
+    }
   },
   "finalCta": {
     "title": "Prêt(e) à aller plus loin ?",
     "sub": "Que vous souhaitiez nous rejoindre ou collaborer avec nous, nous ne sommes qu'à un message de distance.",
     "ctaStudent": "Rejoindre le club",
-    "ctaBusiness": "Nous contacter"
+    "ctaBusiness": "Nous contacter",
+    "eyebrow": "Dernière étape"
   },
   "nav": {
     "home": "Accueil",
-    "paths": "Rejoindre",
-    "proof": "À propos",
+    "join": "Rejoindre",
+    "about": "À propos",
     "event": "E-DAY",
     "contact": "Contact",
     "cta": "Rejoindre le club",

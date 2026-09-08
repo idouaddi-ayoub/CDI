@@ -1,12 +1,12 @@
 export const SITE_URL = "https://www.cdiencga.com";
 
 export const LINKS = {
-  join: "https://wa.me/212708609901",
-  business: "mailto:cdiencga.info@gmail.com",
-  eday: "mailto:cdiencga.info@gmail.com?subject=E-DAY%203.0%20partnership",
+  join: "https://wa.me/212637519218",
+  business: "https://wa.me/212637519218",
+  eday: "https://wa.me/212637519218",
 
   email: "cdiencga.info@gmail.com",
-  whatsapp: "https://wa.me/212708609901",
+  whatsapp: "https://wa.me/212637519218",
   location: "https://maps.app.goo.gl/jSxZgtFuSV6F9GHWA",
 
   club: {

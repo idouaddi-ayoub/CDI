@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@tresjs/nuxt",
     "@nuxt/hints",
+    "@vercel/speed-insights",
   ],
   icon: {
     serverBundle: {

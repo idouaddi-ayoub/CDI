@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { gsap, SplitText } from "~/utils/gsap";
 import { useFps } from "@vueuse/core";
-import { LINKS } from "@/utils/links";
 import { useJumpTo } from "~/composables/useJump";
 
 const { jumpTo } = useJumpTo();
 const { rendersCanvas, downgrade } = useMotionTier();
 const introComplete = useIntroComplete();
 const isJoinModalOpen = ref(false);
-const active = ref<string>("hero");
 
 const ctaWrap = useTemplateRef<HTMLElement>("ctaWrap");
 let idle: gsap.core.Tween | undefined;

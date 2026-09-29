@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@tresjs/nuxt",
     "@nuxt/hints",
+    "@nuxtjs/seo",
     "@vercel/speed-insights",
   ],
   icon: {
@@ -26,15 +27,71 @@ export default defineNuxtConfig({
       collections: ["lucide", "simple-icons", "circle-flags"],
     },
   },
-
   extends: ["./layers/auth"],
   css: ["~/assets/css/main.css", "lenis/dist/lenis.css"],
   colorMode: {
     preference: "dark",
   },
+  site: {
+    url: "https://www.cdiencga.com",
+    name: "CDI ENCGA",
+  },
+  schemaOrg: {
+    identity: {
+      type: "Organization",
+      name: "CDI",
+      alternateName: "CDI ENCG Agadir",
+      logo: "/CDI_logo.svg",
+      url: SITE_URL,
+      email: "wailsebbar2005@gmail.com",
+      telephone: "+212637519218",
+      foundingDate: "2018",
+      description:
+        "A student-run digital club in Agadir. Join to build real skills, or work with us on your next digital project.",
+      contactPoint: [
+        {
+          contactType: "customer support",
+          telephone: "+212637519218",
+          availableLanguage: ["English", "French"],
+        },
+      ],
+      address: {
+        addressLocality: "Agadir",
+        addressRegion: "Souss-Massa",
+        addressCountry: "MA",
+      },
+      sameAs: [
+        "https://www.instagram.com/cdi_encgagadir/",
+        "https://www.linkedin.com/company/cdi-encg-agadir/",
+        "https://www.tiktok.com/@cdi_encgagadir",
+        "https://web.facebook.com/cdi.encga",
+      ],
+    },
+  },
+  linkChecker: {
+    failOnError: true,
+  },
+  robots: {
+    groups: [
+      {
+        userAgent: "*",
+        allow: "/",
+        contentUsage: {
+          "train-ai": "n",
+        },
+      },
+    ],
+    sitemap: ["/sitemap.xml"],
+  },
   routeRules: {
-    "/": { prerender: true },
-    "/fr": { prerender: true },
+    "/": { prerender: false },
+    "/en": { prerender: false },
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: false,
+      routes: ["/", "/en"],
+    },
   },
   build: {
     transpile: ["gsap"],
@@ -78,12 +135,16 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
+    baseUrl: SITE_URL,
     locales: [
-      { code: "en", language: "en-US" },
-      { code: "fr", language: "fr-FR" },
+      { code: "en", language: "en-MA" },
+      { code: "fr", language: "fr_MA" },
     ],
     defaultLocale: "en",
-    baseUrl: SITE_URL,
+    strategy: "prefix_except_default",
+    detectBrowserLanguage: {
+      alwaysRedirect: true,
+    },
   },
   app: {
     head: {

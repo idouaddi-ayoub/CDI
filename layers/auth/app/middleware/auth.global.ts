@@ -4,9 +4,10 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const guarded = to.path === "/members" || to.path.startsWith("/members/");
   if (!guarded && !publicPaths.includes(to.path)) return;
 
-  const { useSession } = await import("../lib/auth-client");
-  const { data: session } = await useSession(useFetch);
-  const isLoggedIn = !!session.value?.user;
+  const session = await useRequestFetch()<{ user?: unknown } | null>(
+    "/api/auth/get-session",
+  ).catch(() => null);
+  const isLoggedIn = !!session?.user;
 
   if (guarded && !isLoggedIn) {
     return navigateTo({ path: "/login", query: { redirect: to.fullPath } });

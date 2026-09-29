@@ -10,8 +10,9 @@
     "scroll": "Scroll",
     "since": "Est. 2018",
     "joinModal": {
-      "body": "Recruitment day is coming soon stay tuned and follow us so you don't miss it.",
-      "cta": "Follow our socials"
+      "body": "Recruitment is open! Fill out the form to join us.",
+      "cta": "Follow our socials",
+      "form": "Fill the form"
     }
   },
   "paths": {

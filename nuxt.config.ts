@@ -77,7 +77,7 @@ export default defineNuxtConfig({
         userAgent: "*",
         allow: "/",
         contentUsage: {
-          "train-ai": "n",
+          "train-ai": "y",
         },
       },
     ],

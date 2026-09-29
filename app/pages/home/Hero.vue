@@ -193,15 +193,21 @@ onBeforeUnmount(() => ctx?.revert());
                         <p class="text-sm text-gray-400 mb-4">
                             {{ $t("home.hero.joinModal.body") }}
                         </p>
-                        <UButton color="primary" block @click="jumpToPath">
-                            {{ $t(`home.nav.${NAV_ITEMS[2].key}`) }}
-                        </UButton>
+                        <NuxtLink
+                            to="https://docs.google.com/forms/d/e/1FAIpQLSfxFe9tDu4kau0qDsxZjxCgwLJeQBGFaNJk5XyjASthNY0-1Q/viewform"
+                            target="_blank"
+                        >
+                            <UButton color="primary" block>
+                                {{ $t("home.hero.joinModal.form") }}
+                            </UButton>
+                        </NuxtLink>
                     </template>
                 </UModal>
             </div>
         </div>
     </section>
 </template>
+
 <style scoped>
 .neon-wrap {
     --glow: 0.4;

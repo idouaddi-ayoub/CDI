@@ -86,6 +86,8 @@ export default defineNuxtConfig({
   routeRules: {
     "/": { prerender: false },
     "/en": { prerender: false },
+    "/members/**": { robots: false },
+    "/members": { robots: false },
   },
   nitro: {
     prerender: {

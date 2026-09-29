@@ -1,4 +1,5 @@
 <script setup lang="ts"></script>
+
 <template>
-    <div>YOU AGH A MAMBER</div>
+    <div>You are a member</div>
 </template>

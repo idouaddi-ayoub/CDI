@@ -10,8 +10,9 @@
     "scroll": "Faire défiler",
     "since": "Depuis 2018",
     "joinModal": {
-      "body": "Le jour du recrutement arrive bientôt restez à l'écoute pour ne pas le manquer.",
-      "cta": "Suivre nos réseaux"
+      "body": "Le recrutement est ouvert ! Remplissez le formulaire pour nous rejoindre.",
+      "cta": "Suivre nos réseaux",
+      "form": "Remplir le formulaire"
     }
   },
   "paths": {

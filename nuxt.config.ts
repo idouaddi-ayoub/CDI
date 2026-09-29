@@ -43,7 +43,6 @@ export default defineNuxtConfig({
       alternateName: "CDI ENCG Agadir",
       logo: "/CDI_logo.svg",
       url: SITE_URL,
-      email: "wailsebbar2005@gmail.com",
       telephone: "+212637519218",
       foundingDate: "2018",
       description:
@@ -81,7 +80,6 @@ export default defineNuxtConfig({
         },
       },
     ],
-    sitemap: ["/sitemap.xml"],
   },
   routeRules: {
     "/": { prerender: false },
@@ -89,12 +87,7 @@ export default defineNuxtConfig({
     "/members/**": { robots: false },
     "/members": { robots: false },
   },
-  nitro: {
-    prerender: {
-      crawlLinks: false,
-      routes: ["/", "/en"],
-    },
-  },
+
   build: {
     transpile: ["gsap"],
   },
@@ -140,7 +133,7 @@ export default defineNuxtConfig({
     baseUrl: SITE_URL,
     locales: [
       { code: "en", language: "en-MA" },
-      { code: "fr", language: "fr_MA" },
+      { code: "fr", language: "fr-MA" },
     ],
     defaultLocale: "en",
     strategy: "prefix_except_default",

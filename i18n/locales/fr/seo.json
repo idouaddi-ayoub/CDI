@@ -9,5 +9,10 @@
   "home": {
     "title": "CDI ENCG Agadir — Allez plus loin avec un club tech étudiant",
     "description": "Un club numérique géré par des étudiants à Agadir. Rejoignez-nous pour développer de vraies compétences, ou collaborez avec nous sur votre prochain projet digital."
+  },
+  "ogImage": {
+    "title": "Deviens plus avec CDI",
+    "description": "Un club digital géré par des étudiants de l'ENCG Agadir. Construis de vrais projets, avec de vraies personnes.",
+    "footer": "ENCG Agadir · Depuis 2018"
   }
 }

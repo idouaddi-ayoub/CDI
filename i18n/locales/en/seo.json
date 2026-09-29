@@ -9,5 +9,10 @@
   "home": {
     "title": "CDI ENCG Agadir — Become more with a student tech club",
     "description": "A student-run digital club in Agadir. Join to build real skills, or work with us on your next digital project."
+  },
+  "ogImage": {
+    "title": "Become more with CDI",
+    "description": "A student-run digital club at ENCG Agadir. Build real things, with real people.",
+    "footer": "ENCG Agadir · Since 2018"
   }
 }

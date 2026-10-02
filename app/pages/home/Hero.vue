@@ -162,48 +162,6 @@ onBeforeUnmount(() => ctx?.revert());
             >
                 {{ $t("home.hero.sub") }}
             </p>
-
-            <div ref="cta" class="mt-10 flex flex-wrap items-center gap-4">
-                <UModal
-                    v-model:open="isJoinModalOpen"
-                    :title="$t('home.hero.ctaStudent')"
-                    :ui="{
-                        overlay: 'bg-black/80 backdrop-blur-sm',
-                        content:
-                            'bg-neutral-950 border border-primary-500/30 rounded-2xl shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)]',
-                        header: 'border-b border-white/10',
-                        title: 'text-white font-semibold',
-                        body: 'text-fg-muted',
-                        close: 'text-white/60 hover:text-white',
-                    }"
-                >
-                    <div ref="ctaWrap" class="neon-wrap inline-block">
-                        <UButton
-                            size="xl"
-                            color="primary"
-                            class="neon-cta px-8"
-                            @mouseenter="onEnter"
-                            @mouseleave="onLeave"
-                        >
-                            {{ $t("home.hero.ctaStudent") }}
-                        </UButton>
-                    </div>
-
-                    <template #body>
-                        <p class="text-sm text-gray-400 mb-4">
-                            {{ $t("home.hero.joinModal.body") }}
-                        </p>
-                        <NuxtLink
-                            to="https://docs.google.com/forms/d/e/1FAIpQLSfxFe9tDu4kau0qDsxZjxCgwLJeQBGFaNJk5XyjASthNY0-1Q/viewform"
-                            target="_blank"
-                        >
-                            <UButton color="primary" block>
-                                {{ $t("home.hero.joinModal.form") }}
-                            </UButton>
-                        </NuxtLink>
-                    </template>
-                </UModal>
-            </div>
         </div>
     </section>
 </template>
